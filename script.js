@@ -223,22 +223,25 @@ if (contactForm) {
   });
 }
 
-// Menuja Mobile
+// Mobile menu me ikona SVG
 const menuBtn = document.getElementById('mb');
 const menuNav = document.getElementById('mn');
+
+const iconBurger = '<svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+const iconClose = '<svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
 
 function closeMobileMenu() {
   if (!menuNav || !menuBtn) return;
   menuNav.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
-  menuBtn.textContent = '☰';
+  menuBtn.innerHTML = iconBurger;
 }
 
 if (menuBtn && menuNav) {
   menuBtn.addEventListener('click', () => {
     const isOpen = menuNav.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', String(isOpen));
-    menuBtn.textContent = isOpen ? '✕' : '☰';
+    menuBtn.innerHTML = isOpen ? iconClose : iconBurger;
   });
 
   menuNav.addEventListener('click', (e) => {
@@ -253,3 +256,4 @@ document.addEventListener('keydown', (e) => {
 window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
   if (e.matches) closeMobileMenu();
 });
+
