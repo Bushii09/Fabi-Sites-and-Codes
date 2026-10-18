@@ -15,14 +15,17 @@
 <header><div class="wrap nav">
 <a class="logo" href="#top">Fabi<b>.</b>Sites &amp; Codes</a>
 <nav id="mn"><a href="#services">Services</a><a href="#admin">Admin panels</a><a href="#process">Process</a><a href="#contact">Contact</a></nav>
-<div class="tools"><button class="btn g sm menu-btn" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mn"></button><button class="btn g sm menu-btn" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mn">
-  <svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-    <line x1="3" y1="6" x2="21" y2="6"></line>
-    <line x1="3" y1="12" x2="21" y2="12"></line>
-    <line x1="3" y1="18" x2="21" y2="18"></line>
-  </svg>
-</button>
-  <button class="btn g sm" id="lg" type="button" aria-label="Language">EN</button><a class="btn p sm hd-cta" href="#contact">Start a project</a></div>
+<div class="tools">
+  <button class="btn g sm menu-btn" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mn">
+    <svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+  <button class="btn g sm" id="lg" type="button" aria-label="Language">EN</button>
+  <a class="btn p sm hd-cta" href="#contact">Start a project</a>
+</div>
 </div></header>
 
 <main id="top">
@@ -31,7 +34,7 @@
 <span class="tag"><i></i>Now booking new projects</span>
 <h1>Websites that <em>stop the scroll.</em></h1>
 <p class="lead">Fabi Sites and Codes designs and builds bold, lightning-fast websites and custom admin panels, so your business looks unforgettable and runs effortlessly.</p>
-<div class="cta"><a class="btn p" href="#contact">Get a free quote </a><a class="btn g" href="#services">See what we build</a></div>
+<div class="cta"><a class="btn p" href="#contact">Get a free quote →</a><a class="btn g" href="#services">See what we build</a></div>
 <div class="stats"><div><b>100%</b><span>Custom-coded, no templates</span></div><div><b>Mobile-first</b><span>Perfect on every screen</span></div><div><b>Admin included</b><span>Manage it yourself</span></div></div>
 </div>
 <div class="dash" aria-hidden="true">
@@ -43,8 +46,8 @@
 </div></div>
 
 <div class="marq" aria-hidden="true"><div>
-<span>Web Design</span><span></span><span>Admin Panels</span><span></span><span>E-commerce</span><span></span><span>Branding</span><span></span><span>SEO</span><span></span><span>Web Apps</span><span></span>
-<span>Web Design</span><span></span><span>Admin Panels</span><span></span><span>E-commerce</span><span></span><span>Branding</span><span></span><span>SEO</span><span></span><span>Web Apps</span><span></span>
+<span>Web Design</span><span>✦</span><span>Admin Panels</span><span>✦</span><span>E-commerce</span><span>✦</span><span>Branding</span><span>✦</span><span>SEO</span><span>✦</span><span>Web Apps</span><span>✦</span>
+<span>Web Design</span><span>✦</span><span>Admin Panels</span><span>✦</span><span>E-commerce</span><span>✦</span><span>Branding</span><span>✦</span><span>SEO</span><span>✦</span><span>Web Apps</span><span>✦</span>
 </div></div>
 
 <section id="services"><div class="wrap">
@@ -53,7 +56,6 @@
   
   <div class="bc a rv">
     <div class="ic">
-      <!-- Ikona: Design / Pen Tool -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
         <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
@@ -73,7 +75,6 @@
 
   <div class="bc b rv">
     <div class="ic">
-      <!-- Ikona: Admin / Dashboard Layout -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect width="7" height="9" x="3" y="3" rx="1"></rect>
         <rect width="7" height="5" x="14" y="3" rx="1"></rect>
@@ -87,7 +88,6 @@
 
   <div class="bc c rv">
     <div class="ic">
-      <!-- Ikona: E-commerce / Cart -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="8" cy="21" r="1"></circle>
         <circle cx="19" cy="21" r="1"></circle>
@@ -100,7 +100,6 @@
 
   <div class="bc d rv">
     <div class="ic">
-      <!-- Ikona: Speed / Zap -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
       </svg>
@@ -111,7 +110,6 @@
 
   <div class="bc e rv">
     <div class="ic">
-      <!-- Ikona: SEO / Search -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"></circle>
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -123,7 +121,6 @@
 
   <div class="bc f rv">
     <div class="ic">
-      <!-- Ikona: Updates / Settings-Tools -->
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
       </svg>
@@ -137,7 +134,7 @@
 <section id="admin" class="band"><div class="wrap contact ctr">
 <div class="rv"><div class="eyebrow">Admin panels</div><h2>Run your business from one clean screen.</h2>
 <p class="sub">Edit prices, publish content, track orders and manage users from a fast, secure panel designed for real people, not developers.</p>
-<ul class="chk"><li> Role-based access &amp; secure login</li><li> Products, orders, customers &amp; media</li><li> Live stats and exportable reports</li><li> Works great on mobile too</li></ul></div>
+<ul class="chk"><li>✓ Role-based access &amp; secure login</li><li>✓ Products, orders, customers &amp; media</li><li>✓ Live stats and exportable reports</li><li>✓ Works great on mobile too</li></ul></div>
 <div class="why duo">
 <div class="bc rv"><h3 class="big">Full control</h3><p>Update your site anytime, no developer needed.</p></div>
 <div class="bc rv"><h3 class="big">Built to scale</h3><p>Grows with your catalogue and customers.</p></div>
@@ -192,7 +189,7 @@
   <textarea name="message" placeholder="Tell us about your project…" required></textarea>
   <input type="hidden" name="_subject" value="New project enquiry — Fabi Sites and Codes">
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-  <button class="btn p" type="submit">Send message </button>
+  <button class="btn p" type="submit">Send message →</button>
   <p id="st" role="status" style="margin:0;color:var(--mut);font-size:.9rem"></p>
 </form>
 </div></section>
