@@ -25,6 +25,17 @@ const D = {
   "Contact": "Kontakti",
   "Start a project": "Nis një projekt",
   "Now booking new projects": "Po pranojmë projekte të reja",
+  "Your Business.": "Biznesi yt.",
+  "Built to Grow.": "I krijuar për t'u rritur.",
+  "Modern websites and custom admin panels designed to help your business stand out, work smarter, and grow online.": "Website moderne dhe panele administrimi të personalizuara, që biznesi yt të dallohet, të funksionojë më mirë dhe të rritet online.",
+  "Start Your Project →": "Nis projektin tënd →",
+  "Explore Our Services": "Eksploro shërbimet tona",
+  "Custom-built": "Ndërtuar sipas kërkesës",
+  "Designed for your business": "Projektuar për biznesin tënd",
+  "Responsive on every screen": "Përshtatet me çdo ekran",
+  "Available when you need them": "Të disponueshme kur të duhen",
+  "Demo data": "Të dhëna demonstrimi",
+  "Illustrative dashboard preview · Demo data": "Pamje ilustruese e panelit · Të dhëna demonstrimi",
   "Websites that": "Faqe interneti që ",
   "stop the scroll.": "tërheqin vëmendjen.",
   "Fabi Sites and Codes designs and builds bold, lightning-fast websites and custom admin panels, so your business looks unforgettable and runs effortlessly.": "Fabi Sites and Codes projekton dhe ndërton faqe interneti të guximshme, shumë të shpejta dhe panele administrimi të personalizuara, që biznesi juaj të duket i paharrueshëm dhe të funksionojë pa mundim.",
@@ -97,13 +108,40 @@ const D = {
   "Phone": "Telefon",
   "Your name": "Emri juaj",
   "Your email": "Email-i juaj",
+  "Estimated budget (optional)": "Buxheti i përafërt (opsionale)",
+  "Under €150": "Nën 150 €",
+  "€150–€400": "150–400 €",
+  "€400–€800": "400–800 €",
+  "€800+": "800 € e lart",
+  "Not sure yet": "Nuk jam i sigurt ende",
+  "When do you need it? (optional)": "Kur të duhet projekti? (opsionale)",
+  "As soon as possible": "Sa më shpejt të jetë e mundur",
+  "Within 2–4 weeks": "Brenda 2–4 javësh",
+  "Within 1–3 months": "Brenda 1–3 muajsh",
+  "I'm just exploring": "Po shqyrtoj mundësitë",
+  "Prefer WhatsApp? Chat with us ↗": "Preferon WhatsApp? Na shkruaj ↗",
   "Tell us about your project…": "Na tregoni për projektin tuaj…",
   "Send message →": "Dërgo mesazhin →",
   "Fabi Sites and Codes. All rights reserved.": "Fabi Sites and Codes. Të gjitha të drejtat e rezervuara.",
   "Websites · Admin panels · Design": "Faqe interneti · Panele administrimi · Dizajn",
   "Sending…": "Po dërgohet…",
   "Thank you! Your message was sent. We will reply soon.": "Faleminderit! Mesazhi u dërgua. Do t'ju përgjigjemi së shpejti.",
-  "Something went wrong. Please email us directly.": "Diçka shkoi keq. Ju lutemi na shkruani drejtpërdrejt me email."
+  "Something went wrong. Please email us directly.": "Diçka shkoi keq. Ju lutemi na shkruani drejtpërdrejt me email.",
+  "Selected work": "Projektet tona",
+  "Real projects.": "Projekte reale.",
+  "Thoughtfully built.": "Të ndërtuara me kujdes.",
+  "A look at projects created for real clients — each with its own purpose, style and digital experience.": "Një vështrim mbi projekte të krijuara për klientë realë — secili me qëllimin, stilin dhe përvojën e vet digjitale.",
+  "CLIENT PROJECT · 01": "PROJEKT PËR KLIENT · 01",
+  "CLIENT PROJECT · 02": "PROJEKT PËR KLIENT · 02",
+  "A bold digital presence for a DJ, built to showcase the brand and connect the energy of live events with an online audience.": "Një prezencë digjitale moderne për një DJ, e krijuar për të prezantuar markën dhe për të lidhur energjinë e eventeve me audiencën online.",
+  "A promotional website concept designed to help businesses present their services clearly and build a stronger online presence.": "Një faqe promovuese e krijuar për t'i ndihmuar bizneset të prezantojnë qartë shërbimet dhe të forcojnë prezencën online.",
+  "Portfolio": "Portofol",
+  "Brand Identity": "Identitet marke",
+  "Responsive Web": "Web responsive",
+  "Business Website": "Faqe biznesi",
+  "Explore live website": "Shiko faqen live",
+  "Have an idea of your own?": "Ke një ide tënden?",
+  "Let's build it together": "Ta ndërtojmë së bashku"
 };
 
 let currentLang = 'sq';
@@ -123,11 +161,11 @@ function applyLanguage(lang) {
   document.documentElement.lang = lang;
 
   // Përkthimi i opsioneve të select-it me data attributes
-  document.querySelectorAll('select[name="project_type"] option').forEach((opt) => {
+  document.querySelectorAll('select option[data-en], select option[data-sq]').forEach((opt) => {
     if (lang === 'sq') {
-      opt.textContent = opt.getAttribute('data-sq') || opt.textContent;
+      opt.textContent = opt.getAttribute('data-sq') || opt.getAttribute('data-en') || opt.textContent;
     } else {
-      opt.textContent = opt.getAttribute('data-en') || opt.textContent;
+      opt.textContent = opt.getAttribute('data-en') || opt.getAttribute('data-sq') || opt.textContent;
     }
   });
 
@@ -223,25 +261,22 @@ if (contactForm) {
   });
 }
 
-// Mobile menu me ikona SVG
+// Menuja Mobile
 const menuBtn = document.getElementById('mb');
 const menuNav = document.getElementById('mn');
-
-const iconBurger = '<svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-const iconClose = '<svg class="m-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
 
 function closeMobileMenu() {
   if (!menuNav || !menuBtn) return;
   menuNav.classList.remove('open');
   menuBtn.setAttribute('aria-expanded', 'false');
-  menuBtn.innerHTML = iconBurger;
+  menuBtn.textContent = '☰';
 }
 
 if (menuBtn && menuNav) {
   menuBtn.addEventListener('click', () => {
     const isOpen = menuNav.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', String(isOpen));
-    menuBtn.innerHTML = isOpen ? iconClose : iconBurger;
+    menuBtn.textContent = isOpen ? '✕' : '☰';
   });
 
   menuNav.addEventListener('click', (e) => {
@@ -256,4 +291,3 @@ document.addEventListener('keydown', (e) => {
 window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
   if (e.matches) closeMobileMenu();
 });
-
