@@ -31,7 +31,7 @@ const D = {
   "Start Your Project →": "Nis projektin tënd →",
   "Explore Our Services": "Eksploro shërbimet tona",
   "Custom-built": "Ndërtuar sipas kërkesës",
-  "Designed for your business": "Projektuar për biznesin tënd",
+  "Designed for your business": "Projektuar për biznesin tęd",
   "Responsive on every screen": "Përshtatet me çdo ekran",
   "Available when you need them": "Të disponueshme kur të duhen",
   "Demo data": "Të dhëna demonstrimi",
@@ -144,7 +144,7 @@ const D = {
   "Let's build it together": "Ta ndërtojmë së bashku"
 };
 
-let currentLang = 'sq';
+let currentLang = 'en';
 const titleOrig = document.title;
 const metaDesc = document.querySelector('meta[name="description"]');
 const metaDescOrig = metaDesc ? metaDesc.content : '';
@@ -193,10 +193,11 @@ function applyLanguage(lang) {
   });
 
   // Përkthimi i Placeholders
-  document.querySelectorAll('[placeholder]').forEach((el) => {
-    if (!el.dataset.p) el.dataset.p = el.placeholder;
-    el.placeholder = lang === 'sq' && D[el.dataset.p] ? D[el.dataset.p] : el.dataset.p;
-  });
+  // Përkthimi i Placeholders
+document.querySelectorAll('[placeholder]').forEach((el) => {
+  if (!el.dataset.p) el.dataset.p = el.placeholder;
+  el.placeholder = lang === 'sq' && D[el.dataset.p] ? D[el.dataset.p] : el.dataset.p; // Korrigjuar: Kontrollon për 'sq'
+});
 
   // Titulli dhe Meta Description
   document.title = lang === 'sq' 
@@ -224,13 +225,14 @@ function applyLanguage(lang) {
 const langToggle = document.getElementById('lg');
 if (langToggle) {
   langToggle.addEventListener('click', () => {
-    applyLanguage(currentLang === 'sq' ? 'en' : 'sq');
+    applyLanguage(currentLang === 'en' ? 'sq' : 'en');
   });
 }
 
-let savedLang = 'sq';
+// Ndryshimi kryesor: Caktohet 'en' si parazgjedhje nëse nuk ka zgjedhje të ruajtur më parë
+let savedLang = 'en';
 try {
-  savedLang = localStorage.getItem('site_lang') || 'sq';
+  savedLang = localStorage.getItem('site_lang') || 'en';
 } catch (e) {}
 applyLanguage(savedLang);
 
