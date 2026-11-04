@@ -1,186 +1,1347 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fabi Sites and Codes — Websites & Admin Panels That Stand Out</title>
-<meta name="theme-color" content="#0a1020">
-<meta name="description" content="Custom website design, development and admin panels. Fabi Sites and Codes builds fast, striking sites that win clients.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fc">
+  <meta name="description" id="meta-description" content="Fabi Sites & Codes creates modern websites and custom admin dashboards for businesses ready to grow online.">
+  <title data-sq="Fabi Sites &amp; Codes — Digjital, në mënyrën tënde." data-en="Fabi Sites &amp; Codes — Digital, made personal.">Fabi Sites &amp; Codes — Digital, made personal.</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --paper: #070b12;
+      --panel: #0f1724;
+      --panel-alt: #111c2a;
+      --ink: #edf3ff;
+      --muted: #9aa8bd;
+      --line: rgba(163, 180, 211, 0.18);
+      --lime: #a8ff55;
+      --blue: #62a3ff;
+      --cyan: #7ef9ff;
+      --coral: #ff7c6b;
+      --white: #eef6ff;
+      --shadow: rgba(8, 18, 31, 0.72);
+      --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      --sans: "Aptos", "Segoe UI", sans-serif;
+      --mono: "Cascadia Code", "Courier New", monospace;
+      --page: min(1240px, calc(100% - 72px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(98, 163, 255, 0.2), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(168, 255, 85, 0.12), transparent 26%),
+        var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    ::selection { background: rgba(168, 255, 85, 0.85); color: #08110f; }
+    .page { width: var(--page); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0; font: 11px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); content: ""; }
+    .section-heading { display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: end; margin-bottom: 48px; }
+    .section-heading h2 { max-width: 720px; margin: 0; font: 400 clamp(42px, 6vw, 78px)/.98 var(--serif); letter-spacing: 0; }
+    .section-heading p { max-width: 390px; margin: 0 0 5px auto; color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+    .site-header {
+      position: sticky; z-index: 20; top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 11, 18, 0.8);
+      backdrop-filter: blur(18px);
+    }
+    .header-inner { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 28px; }
+    .wordmark { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 750; letter-spacing: -.03em; white-space: nowrap; }
+    .mark {
+      display: grid; width: 31px; height: 31px; place-items: center;
+      border-radius: 50%; background: linear-gradient(135deg, var(--lime), var(--cyan));
+      color: #0b100e; font: 700 15px var(--serif);
+      box-shadow: 0 0 18px rgba(168, 255, 85, 0.5);
+    }
+    .wordmark small { color: var(--muted); font-size: 11px; font-weight: 500; }
+    .main-nav { display: flex; align-items: center; gap: clamp(18px, 2.7vw, 38px); }
+    .main-nav a, .lang-toggle { font-size: 12px; font-weight: 600; }
+    .main-nav a { transition: color .2s ease; }
+    .main-nav a:hover { color: var(--cyan); }
+    .header-actions { display: flex; align-items: center; gap: 18px; }
+    .lang-toggle {
+      border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: rgba(255,255,255,0.02); color: var(--muted); cursor: pointer;
+      transition: border-color .2s ease, transform .2s ease;
+    }
+    .lang-toggle:hover { border-color: rgba(126, 249, 255, 0.42); transform: translateY(-1px); }
+    .lang-toggle strong { color: var(--ink); }
+    .contact-link {
+      display: inline-flex; min-height: 42px; align-items: center; gap: 12px; padding: 0 15px;
+      border: 1px solid rgba(126, 249, 255, 0.25); border-radius: 12px; background: linear-gradient(135deg, rgba(98, 163, 255, 0.13), rgba(168, 255, 85, 0.11));
+      font-size: 12px; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    .contact-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(168, 255, 85, 0.5);
+      box-shadow: 0 18px 28px rgba(98, 163, 255, 0.12);
+      background: linear-gradient(135deg, rgba(98, 163, 255, 0.19), rgba(168, 255, 85, 0.16));
+      color: var(--white);
+    }
+    .contact-link span { font-size: 17px; }
+    .menu-toggle { display: none; width: 40px; height: 40px; border: 1px solid var(--line); background: transparent; cursor: pointer; border-radius: 10px; }
+
+    .hero { position: relative; overflow: hidden; padding: 69px 0 74px; border-bottom: 1px solid var(--line); }
+    .hero::after {
+      position: absolute; z-index: -1; top: 46px; right: -100px; width: 420px; height: 420px;
+      border: 1px solid rgba(98, 163, 255, 0.22); border-radius: 50%;
+      box-shadow: 0 0 0 42px rgba(98, 163, 255, 0.03), 0 0 0 84px rgba(98, 163, 255, 0.02);
+      content: "";
+    }
+    .hero-topline { display: flex; align-items: center; justify-content: space-between; gap: 24px; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+    .availability { display: flex; align-items: center; gap: 9px; }
+    .availability i { width: 8px; height: 8px; border-radius: 50%; background: #64a76b; box-shadow: 0 0 0 4px rgb(100 167 107 / 14%); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); gap: 42px; align-items: center; padding-top: 49px; }
+    .hero h1 { max-width: 740px; margin: 0; font: 400 clamp(58px, 8.3vw, 112px)/.89 var(--serif); letter-spacing: 0; }
+    .hero h1 .italic { color: var(--cyan); font-style: italic; text-shadow: 0 0 16px rgba(126, 249, 255, 0.32); }
+    .hero-copy { max-width: 520px; margin: 27px 0 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 31px; }
+    .button-primary, .button-secondary {
+      display: inline-flex; min-height: 49px; align-items: center; justify-content: center; gap: 14px;
+      padding: 0 18px; font-size: 12px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .button-primary {
+      background: linear-gradient(135deg, #edf6ff, #d9f3ff);
+      color: #08131e; border: 1px solid transparent;
+      box-shadow: 0 14px 40px rgba(126, 249, 255, 0.13);
+    }
+    .button-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #f4f8fe, #d7fbff); }
+    .button-secondary {
+      border: 1px solid var(--line); background: rgba(255,255,255,0.02); color: var(--ink);
+    }
+    .button-secondary:hover { transform: translateY(-2px); border-color: rgba(126, 249, 255, 0.35); background: rgba(255,255,255,0.04); }
+    .button-primary span, .button-secondary span { font-size: 17px; }
+    .hero-note { display: flex; align-items: center; gap: 13px; margin-top: 36px; color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
+    .hero-note::before { width: 37px; height: 1px; background: var(--coral); content: ""; }
+    .hero-art { position: relative; min-height: 398px; display: grid; place-items: center; }
+    .orbit { position: absolute; width: 340px; aspect-ratio: 1; border: 1px solid rgba(162, 180, 214, 0.2); border-radius: 50%; }
+    .orbit::before, .orbit::after { position: absolute; width: 9px; height: 9px; border-radius: 50%; content: ""; }
+    .orbit::before { top: 39px; left: 44px; background: var(--coral); box-shadow: 0 0 18px rgba(255, 124, 107, 0.7); }
+    .orbit::after { right: 3px; bottom: 102px; background: var(--blue); box-shadow: 0 0 18px rgba(98, 163, 255, 0.7); }
+    .dashboard {
+      position: relative; width: min(100%, 390px); padding: 19px; border: 1px solid rgba(165, 177, 205, 0.22);
+      background: rgba(18, 31, 46, 0.86); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      transform: rotate(2deg); animation: float-in .8s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .dash-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid #ecece5; }
+    .dash-brand { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 750; }
+    .dash-brand i { width: 21px; height: 21px; border-radius: 6px; background: var(--blue); }
+    .dash-user { width: 23px; height: 23px; border-radius: 50%; background: var(--lime); }
+    .dash-welcome { margin: 18px 0 3px; font: 19px var(--serif); }
+    .dash-sub { margin: 0; color: #777a72; font-size: 9px; }
+    .dash-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 16px; }
+    .metric { padding: 10px 9px; background: #f7f7f2; }
+    .metric small { display: block; color: #767971; font-size: 8px; }
+    .metric strong { display: block; margin-top: 7px; font: 16px var(--serif); }
+    .metric em { display: block; margin-top: 3px; color: #498151; font: normal 8px var(--mono); }
+    .sample-note { margin-top: 8px; color: #777a72; font-size: 8px; font-weight: 600; }
+    .dash-chart { display: flex; height: 104px; align-items: end; justify-content: space-between; gap: 7px; margin-top: 17px; padding: 11px 9px 0; border: 1px solid #ecece5; }
+    .dash-chart i { width: 10%; border-radius: 3px 3px 0 0; background: #dce5ff; }
+    .dash-chart i:nth-child(3n) { background: var(--blue); }
+    .dash-bottom { display: flex; justify-content: space-between; margin-top: 12px; color: #777a72; font: 8px var(--mono); }
+    .floating-tag { position: absolute; right: -11px; bottom: 47px; display: flex; align-items: center; gap: 9px; padding: 11px 14px; border: 1px solid var(--line); background: var(--white); box-shadow: 0 10px 28px rgb(29 33 29 / 8%); font-size: 10px; font-weight: 700; transform: rotate(-3deg); }
+    .floating-tag i { width: 8px; height: 8px; border-radius: 50%; background: #76b47c; }
+
+    .proof-strip { border-bottom: 1px solid var(--line); }
+    .proof-inner { display: grid; grid-template-columns: 1.15fr repeat(3, 1fr); align-items: center; min-height: 93px; }
+    .proof-label { color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
+    .proof-item { padding: 12px 20px; border-left: 1px solid var(--line); font: 15px var(--serif); }
+    .proof-item b { display: block; margin-bottom: 4px; font: 700 12px var(--sans); }
+    .proof-item span { color: var(--muted); font: 10px var(--sans); }
+
+    .work-section { padding: 108px 0 112px; }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .project-card { min-width: 0; }
+    .project-visual { position: relative; display: grid; min-height: 337px; place-items: center; overflow: hidden; padding: 26px; }
+    .project-visual.dj { background: #18181b; color: #fff; }
+    .project-visual.biz { background: #e4ecff; color: #171d32; }
+    .project-visual::before { position: absolute; width: 330px; height: 330px; border: 1px solid currentColor; border-radius: 50%; opacity: .14; content: ""; }
+    .project-visual.dj::after { position: absolute; top: 20%; left: 23%; width: 180px; height: 180px; border: 1px solid var(--coral); border-radius: 50%; box-shadow: 0 0 0 17px rgb(237 120 99 / 10%), 0 0 0 35px rgb(237 120 99 / 7%), 0 0 0 53px rgb(237 120 99 / 4%); content: ""; }
+    .dj-window, .biz-window { position: relative; z-index: 1; width: min(100%, 410px); min-height: 220px; padding: 16px; border: 1px solid rgb(255 255 255 / 26%); background: rgb(255 255 255 / 7%); backdrop-filter: blur(8px); }
+    .browser-bar { display: flex; align-items: center; gap: 5px; padding-bottom: 13px; border-bottom: 1px solid rgb(255 255 255 / 15%); }
+    .browser-bar i { width: 6px; height: 6px; border-radius: 50%; background: rgb(255 255 255 / 44%); }
+    .browser-url { width: 43%; height: 11px; margin-left: 11px; border-radius: 8px; background: rgb(255 255 255 / 12%); }
+    .dj-content { display: grid; min-height: 163px; place-items: center; text-align: center; }
+    .dj-content small { color: var(--lime); font: 9px var(--mono); letter-spacing: .14em; }
+    .dj-content strong { display: block; margin-top: 6px; font: 400 clamp(36px, 5vw, 58px)/.9 var(--serif); }
+    .dj-content span { margin-top: 13px; font: 9px var(--mono); letter-spacing: .1em; }
+    .biz-window { border-color: rgb(23 29 50 / 12%); background: #fff; box-shadow: 0 17px 40px rgb(41 55 94 / 13%); }
+    .biz-top { display: flex; justify-content: space-between; align-items: center; color: #202a48; font-size: 10px; font-weight: 750; }
+    .biz-top span { color: var(--blue); font: 9px var(--mono); }
+    .biz-content { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; align-items: center; min-height: 165px; }
+    .biz-content h3 { margin: 0; font: 400 28px/.98 var(--serif); }
+    .biz-content p { margin: 8px 0 0; color: #737b8f; font-size: 8px; line-height: 1.5; }
+    .biz-art { display: grid; aspect-ratio: 1.2; place-items: center; background: linear-gradient(140deg, #d7e1ff, #f8d7c9); }
+    .biz-art i { width: 57%; height: 57%; border: 1px solid #fff; border-radius: 50%; box-shadow: 0 0 0 12px rgb(255 255 255 / 30%); }
+    .project-meta { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 20px 2px 0; }
+    .project-index { color: var(--muted); font: 10px var(--mono); }
+    .project-meta h3 { margin: 8px 0 6px; font: 30px var(--serif); }
+    .project-meta p { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .project-open { flex: 0 0 auto; display: grid; width: 39px; height: 39px; place-items: center; border: 1px solid var(--line); font-size: 18px; transition: background .2s ease, color .2s ease; }
+    .project-open:hover { background: var(--ink); color: white; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .project-tags span { padding: 6px 8px; border: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); }
+
+    .services-section { padding: 103px 0 108px; background: rgba(14, 19, 29, 0.9); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid rgba(163, 180, 211, 0.18); border-left: 1px solid rgba(163, 180, 211, 0.18); }
+    .service { min-width: 0; min-height: 221px; padding: 24px 25px; border-right: 1px solid rgba(163, 180, 211, 0.18); border-bottom: 1px solid rgba(163, 180, 211, 0.18); transition: background .2s ease, transform .2s ease; }
+    .service:hover { background: rgba(255, 255, 255, 0.02); transform: translateY(-2px); }
+    .service-top { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font: 10px var(--mono); }
+    .service-symbol { display: grid; width: 33px; height: 33px; place-items: center; border: 1px solid rgba(126, 249, 255, 0.3); border-radius: 50%; color: var(--cyan); font: 18px var(--serif); }
+    .service h3 { margin: 24px 0 9px; font: 25px var(--serif); }
+    .service p { max-width: 320px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+
+    .admin-section { overflow: hidden; padding: 112px 0; background: linear-gradient(180deg, rgba(19, 25, 35, 0.96), rgba(12, 15, 20, 0.98)); color: var(--white); }
+    .admin-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
+    .admin-section .eyebrow { color: #c1c7bb; }
+    .admin-section .eyebrow::before { background: var(--lime); }
+    .admin-copy h2 { max-width: 510px; margin: 28px 0 18px; font: 400 clamp(43px, 6vw, 72px)/.98 var(--serif); }
+    .admin-copy > p { max-width: 450px; margin: 0; color: #b7bcb2; font-size: 14px; line-height: 1.75; }
+    .admin-points { display: grid; gap: 14px; margin: 28px 0 0; padding: 0; list-style: none; }
+    .admin-points li { display: flex; align-items: center; gap: 10px; color: #e0e3db; font-size: 12px; }
+    .admin-points li::before { display: grid; width: 18px; height: 18px; place-items: center; border-radius: 50%; background: var(--lime); color: var(--ink); content: "+"; font-weight: 800; }
+    .admin-screen { padding: 18px; border: 1px solid #4b5148; background: #282d27; box-shadow: 0 20px 80px rgb(0 0 0 / 22%); }
+    .admin-screen-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid #3b413a; color: #e8ebe4; font-size: 11px; }
+    .admin-screen-top span { color: #a7afa1; font: 9px var(--mono); }
+    .admin-screen .sample-note { margin: 10px 0 0; color: #b7bcb2; }
+    .admin-screen-body { display: grid; grid-template-columns: 100px 1fr; gap: 15px; padding-top: 17px; }
+    .admin-side { display: grid; align-content: start; gap: 8px; }
+    .admin-side i { height: 22px; background: #343a33; }
+    .admin-side i:first-child { background: #42533a; }
+    .admin-main { min-width: 0; }
+    .admin-main-title { margin: 0 0 11px; font: 18px var(--serif); }
+    .admin-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .admin-stat { padding: 10px; border: 1px solid #40473f; }
+    .admin-stat small { display: block; color: #9da69a; font-size: 8px; }
+    .admin-stat strong { display: block; margin-top: 7px; font: 17px var(--serif); }
+    .admin-table { display: grid; grid-template-columns: 1.5fr .8fr .7fr; gap: 1px; margin-top: 12px; background: #444a42; border: 1px solid #444a42; }
+    .admin-table span { min-width: 0; overflow: hidden; padding: 9px 7px; background: #2c312b; color: #cbd0c8; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+    .admin-table span:nth-child(-n+3) { color: #9da69a; font: 8px var(--mono); }
+    .admin-status { color: #d5f36a !important; }
+
+    .process-section { padding: 108px 0 115px; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+    .process-step { padding: 22px 18px 0 0; }
+    .process-step + .process-step { padding-left: 20px; border-left: 1px solid var(--line); }
+    .process-number { display: inline-flex; width: 38px; height: 38px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 50%; color: var(--blue); font: 11px var(--mono); }
+    .process-step h3 { margin: 22px 0 8px; font: 24px var(--serif); }
+    .process-step p { max-width: 245px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+    .contact-section { padding: 103px 0 96px; border-top: 1px solid var(--line); background: linear-gradient(180deg, rgba(13, 19, 29, 0.9), rgba(15, 23, 36, 0.98)); }
+    .contact-layout { display: grid; grid-template-columns: 1fr .85fr; gap: 80px; }
+    .contact-copy h2 { max-width: 610px; margin: 25px 0 17px; font: 400 clamp(50px, 7vw, 86px)/.93 var(--serif); }
+    .contact-copy > p { max-width: 430px; margin: 0; color: #aebad2; font-size: 14px; line-height: 1.7; }
+    .contact-details { display: grid; gap: 13px; margin-top: 32px; }
+    .contact-details a { width: fit-content; display: flex; align-items: center; gap: 11px; font-size: 13px; font-weight: 650; }
+    .contact-details a:hover { color: var(--cyan); }
+    .contact-details span { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid rgba(126, 249, 255, 0.22); border-radius: 50%; font: 13px var(--serif); }
+    .contact-form { padding-top: 10px; }
+    .field { display: grid; gap: 7px; margin-bottom: 17px; }
+    .field label { color: #a4b0c4; font: 10px var(--mono); text-transform: uppercase; }
+    .field input, .field textarea, .field select { width: 100%; border: 0; border-bottom: 1px solid rgba(161, 177, 206, 0.24); border-radius: 0; padding: 11px 0; background: transparent; color: var(--ink); font-size: 13px; }
+    .field input::placeholder, .field textarea::placeholder { color: #8b91a4; }
+    .field textarea { min-height: 82px; resize: vertical; }
+    .field select { appearance: none; }
+    .form-note { min-height: 17px; margin: 12px 0 0; color: #a4b0c4; font-size: 11px; line-height: 1.5; }
+
+    .site-footer { padding: 28px 0; background: rgba(10, 14, 20, 1); color: white; }
+    .footer-inner { display: block; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr repeat(3, minmax(0, 1fr)); gap: 22px; width: 100%; align-items: start; }
+    .footer-column { min-width: 0; }
+    .footer-column h4 { margin: 0 0 14px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .footer-column a, .footer-column p { display: block; margin: 0 0 8px; color: var(--ink); font-size: 14px; line-height: 1.7; }
+    .footer-column a:hover { color: var(--cyan); }
+    .footer-brand { font-size: 13px; font-weight: 700; }
+    .footer-brand span { color: var(--lime); }
+    .footer-meta { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; margin-top: 22px; border-top: 1px solid var(--line); }
+    .footer-copy { color: #b4b8af; font: 9px var(--mono); }
+    .back-top { display: inline-flex; align-items: center; gap: 9px; color: #e8ebe4; font-size: 11px; }
+    .back-top span { color: var(--lime); font-size: 17px; }
+    .agency-hero { padding-top: 52px; }
+    .agency-badge {
+      display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(168,255,85,0.23); border-radius: 999px;
+      background: rgba(168,255,85,0.08); color: var(--ink); padding: 10px 16px; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase;
+    }
+    .agency-badge::before { content: "★"; color: #ffd76a; }
+    .agency-hero .hero-copy { max-width: 680px; }
+    .hero-panel {
+      position: relative; padding: 22px 20px; border: 1px solid var(--line); border-radius: 24px; background: rgba(12,18,28,0.9);
+      box-shadow: 0 25px 55px rgba(0,0,0,0.22);
+    }
+    .hero-panel strong { display: block; margin-bottom: 18px; font: 700 15px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+    .hero-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .hero-panel li { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 13px; }
+    .hero-panel li::before { content: "✓"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(126,249,255,0.12); color: var(--cyan); }
+    .hero-quote {
+      margin-top: 18px; padding-left: 16px; border-left: 2px solid rgba(126,249,255,0.4); color: var(--muted); font-size: 13px; line-height: 1.7;
+    }
+    .agency-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin-top: 24px; }
+    .agency-stat { padding: 18px 16px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,0.01); }
+    .agency-stat strong { display: block; font-size: 28px; letter-spacing: -.05em; }
+    .agency-stat span { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .small-kicker {
+      margin-bottom: 12px; font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+    }
+    .inline-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+    .inline-list li { display: flex; align-items: center; gap: 12px; color: var(--ink); }
+    .inline-list li::before { content: "✓"; color: var(--lime); font-weight: 700; }
+    .portfolio-strip { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .portfolio-strip span { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: var(--muted); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .about-copy .small-kicker { margin-bottom: 10px; }
+    .trusted-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .trusted-list li { color: var(--ink); display: flex; align-items: center; gap: 12px; }
+    .trusted-list li::before { content: "✓"; color: var(--lime); }
+    .conclusion-panel {
+      margin-top: 34px; padding: 24px 22px; border: 1px solid rgba(126,249,255,0.2); border-radius: 22px; background: rgba(126,249,255,0.04);
+    }
+    .conclusion-panel p { margin: 0; color: var(--ink); font-size: 16px; line-height: 1.7; }
+    .reveal { transition: opacity .65s ease, transform .65s cubic-bezier(.2,.8,.2,1); }
+    .reveal.is-pending { opacity: 0; transform: translateY(18px); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .hero-benefits {
+      list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px;
+      padding: 0; margin: 28px 0 0; max-width: 520px;
+    }
+    .hero-benefits li {
+      display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 14px; font-weight: 600;
+      padding: 0; margin: 0;
+    }
+    .hero-benefits li::before {
+      content: "✓"; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(168, 255, 85, 0.14); border: 1px solid rgba(168, 255, 85, 0.28); color: var(--lime); font-weight: 700;
+      box-shadow: 0 0 0 4px rgba(168, 255, 85, 0.04);
+    }
+    .trust-strip {
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(17, 28, 42, 0.45);
+    }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; padding: 22px 0;
+    }
+    .trust-card {
+      padding: 18px 16px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .trust-card strong {
+      display: block; margin-bottom: 7px; font-size: 17px; letter-spacing: -.03em;
+    }
+    .trust-card span { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .why-section, .testimonial-section, .about-section, .faq-section {
+      padding: 96px 0 18px;
+    }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px;
+    }
+    .why-card {
+      padding: 26px 20px 20px; border: 1px solid var(--line); border-radius: 22px; background: rgba(15, 23, 36, 0.7);
+      box-shadow: 0 20px 30px rgba(2, 6, 13, 0.15);
+    }
+    .why-icon {
+      display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(98,163,255,0.18), rgba(126,249,255,0.12));
+      font-size: 22px; box-shadow: inset 0 0 0 1px rgba(126,249,255,0.15);
+    }
+    .why-card h3 { margin: 0 0 12px; font-size: 24px; letter-spacing: -.04em; }
+    .why-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .project-results {
+      list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 16px 0 0;
+    }
+    .project-results li {
+      padding: 7px 10px; border-radius: 999px; border: 1px solid rgba(126,249,255,0.15); background: rgba(126,249,255,0.04);
+      color: var(--ink); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase;
+    }
+    .testimonial-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 24px;
+    }
+    .testimonial-card {
+      padding: 26px 22px; border: 1px solid var(--line); border-radius: 22px; background: rgba(15, 23, 36, 0.7);
+    }
+    .stars { display: inline-flex; gap: 3px; margin-bottom: 16px; color: #ffd76a; letter-spacing: 1px; }
+    .testimonial-card p { margin: 0; color: var(--ink); font-size: 18px; line-height: 1.6; }
+    .testimonial-card footer { margin-top: 18px; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    .testimonial-author { display: inline-flex; align-items: center; gap: 8px; }
+    .testimonial-name { color: var(--primary); font-weight: 800; letter-spacing: 0; text-transform: none; }
+    .verified-badge {
+      display: inline-grid; width: 18px; height: 18px; place-items: center;
+      border-radius: 50%; background: #1877f2; color: #fff; font: 700 12px/1 var(--sans);
+    }
+    .about-layout {
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 38px; align-items: center; padding-top: 18px;
+    }
+    .about-media {
+      position: relative; min-height: 420px; border-radius: 30px; background:
+        radial-gradient(circle at 25% 20%, rgba(126,249,255,0.25), rgba(126,249,255,0) 28%),
+        linear-gradient(135deg, rgba(98,163,255,0.18), rgba(162,180,214,0.08));
+      border: 1px solid var(--line); overflow: hidden;
+    }
+    .about-media::before {
+      content: "F."; position: absolute; inset: 0; display: grid; place-items: center; font: 400 clamp(120px, 20vw, 220px)/1 var(--serif); color: rgba(237,243,255,0.8); text-shadow: 0 0 30px rgba(126,249,255,0.18);
+    }
+    .about-badge {
+      position: absolute; right: 22px; bottom: 22px; padding: 11px 14px; border-radius: 14px; background: rgba(7,11,18,0.75);
+      border: 1px solid var(--line); color: var(--ink); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .about-copy h3 {
+      margin: 0 0 14px; font-size: clamp(38px, 5vw, 62px); letter-spacing: -.06em; line-height: .95;
+    }
+    .about-copy p { margin: 0 0 18px; color: var(--muted); line-height: 1.8; }
+    .about-list {
+      list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px;
+    }
+    .about-list li { display: flex; align-items: center; gap: 12px; color: var(--ink); }
+    .about-list li::before {
+      content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 18px rgba(126,249,255,0.6);
+    }
+    .faq-list {
+      display: grid; gap: 14px; margin-top: 26px;
+    }
+    .faq-item {
+      border: 1px solid var(--line); border-radius: 18px; background: rgba(15,23,36,0.62); overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none; cursor: pointer; padding: 20px 22px; font-weight: 650; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+"; font-size: 24px; color: var(--cyan);
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p {
+      margin: 0; padding: 0 22px 22px; color: var(--muted); font-size: 14px; line-height: 1.7;
+    }
+    @keyframes float-in { from { opacity: 0; transform: translateY(18px) rotate(2deg); } to { opacity: 1; transform: translateY(0) rotate(2deg); } }
+
+    @media (max-width: 900px) {
+      :root { --page: min(100% - 44px, 700px); }
+      .main-nav { gap: 17px; }
+      .main-nav a { font-size: 11px; }
+      .hero-grid { grid-template-columns: 1fr  .8fr; gap: 18px; }
+      .hero-art { min-height: 330px; }
+      .orbit { width: 270px; }
+      .dashboard { padding: 13px; }
+      .floating-tag { right: -6px; bottom: 24px; }
+      .admin-layout { grid-template-columns: 1fr; gap: 42px; }
+      .admin-copy { display: grid; grid-template-columns: 1fr 1fr; column-gap: 35px; align-items: end; }
+      .admin-copy .eyebrow { grid-column: 1 / -1; }
+      .admin-copy h2 { margin-bottom: 0; }
+      .admin-copy > p { padding-bottom: 3px; }
+      .admin-points { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
+      .contact-layout { gap: 45px; }
+    }
+    @media (max-width: 680px) {
+      :root { --page: calc(100% - 36px); }
+      html { scroll-padding-top: 72px; }
+      .header-inner { min-height: 66px; gap: 11px; }
+      .wordmark { gap: 8px; font-size: 12px; }
+      .wordmark small { display: none; }
+      .mark { width: 29px; height: 29px; }
+      .menu-toggle { display: grid; place-items: center; order: 3; }
+      .menu-toggle::before, .menu-toggle::after { grid-area: 1 / 1; width: 15px; height: 1px; background: var(--ink); content: ""; transition: transform .2s ease; }
+      .menu-toggle::before { transform: translateY(-3px); }
+      .menu-toggle::after { transform: translateY(3px); }
+      .menu-toggle[aria-expanded="true"]::before { transform: rotate(45deg); }
+      .menu-toggle[aria-expanded="true"]::after { transform: rotate(-45deg); }
+      .header-actions { gap: 12px; margin-left: auto; }
+      .contact-link { min-height: 37px; gap: 7px; padding: 0 10px; font-size: 10px; }
+      .contact-link span { font-size: 14px; }
+      .lang-toggle { font-size: 10px; }
+      .main-nav { position: absolute; top: 65px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 17px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .main-nav.is-open { display: grid; }
+      .main-nav a { padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+      .hero { padding: 39px 0 50px; }
+      .hero-topline { align-items: flex-start; font-size: 8px; }
+      .hero-topline > span:last-child { max-width: 130px; text-align: right; line-height: 1.5; }
+      .hero-grid { grid-template-columns: 1fr; gap: 13px; padding-top: 40px; }
+      .hero h1 { max-width: 550px; font-size: clamp(57px, 15vw, 86px); }
+      .hero-copy { max-width: 470px; margin-top: 20px; font-size: 14px; }
+      .hero-actions { margin-top: 23px; }
+      .button-primary, .button-secondary { min-height: 45px; padding-inline: 13px; font-size: 11px; }
+      .hero-note { margin-top: 25px; font-size: 8px; }
+      .hero-art { min-height: 306px; margin-top: 8px; }
+      .orbit { width: min(78vw, 290px); }
+      .dashboard { width: min(88%, 360px); }
+      .floating-tag { right: 0; bottom: 27px; padding: 9px 11px; font-size: 9px; }
+      .proof-inner { grid-template-columns: 1fr 1fr; padding: 15px 0; }
+      .proof-label { grid-column: 1 / -1; margin-bottom: 4px; }
+      .proof-item { padding: 12px 11px; }
+      .proof-item:nth-child(2n) { border-left: 0; }
+      .proof-item b { font-size: 11px; }
+      .proof-item span { font-size: 9px; }
+      .work-section, .process-section { padding: 72px 0 77px; }
+      .section-heading { grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
+      .section-heading h2 { max-width: 560px; font-size: clamp(45px, 12vw, 64px); }
+      .section-heading p { margin: 0; font-size: 13px; }
+      .work-grid { grid-template-columns: 1fr; gap: 36px; }
+      .project-visual { min-height: 270px; padding: 18px; }
+      .dj-window, .biz-window { min-height: 205px; padding: 13px; }
+      .dj-content { min-height: 155px; }
+      .biz-content { min-height: 152px; }
+      .project-meta h3 { font-size: 27px; }
+      .project-meta p { font-size: 12px; }
+      .services-section { padding: 73px 0 78px; }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service { min-height: 204px; padding: 18px 15px; }
+      .service h3 { margin-top: 18px; font-size: 21px; }
+      .service p { font-size: 11px; }
+      .admin-section { padding: 75px 0; }
+      .admin-copy { display: block; }
+      .admin-copy h2 { margin-top: 24px; font-size: 57px; }
+      .admin-copy > p { margin-top: 14px; font-size: 13px; }
+      .admin-points { grid-template-columns: 1fr; gap: 11px; }
+      .admin-screen { padding: 12px; }
+      .admin-screen-body { grid-template-columns: 58px 1fr; gap: 9px; }
+      .admin-side i { height: 19px; }
+      .admin-stat { padding: 7px; }
+      .admin-stat strong { font-size: 14px; }
+      .admin-table span { padding: 8px 5px; font-size: 7px; }
+      .process-grid { grid-template-columns: 1fr 1fr; row-gap: 25px; }
+      .process-step { padding-right: 13px; }
+      .process-step + .process-step { padding-left: 13px; }
+      .process-step:nth-child(3) { padding-left: 0; border-left: 0; }
+      .process-step h3 { margin-top: 16px; font-size: 21px; }
+      .process-step p { font-size: 11px; }
+      .contact-section { padding: 73px 0 68px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+      .contact-copy h2 { font-size: clamp(56px, 14vw, 78px); }
+      .contact-copy > p { font-size: 13px; }
+      .contact-details { margin-top: 23px; }
+      .contact-form { padding-top: 0; }
+      .footer-inner { align-items: flex-start; flex-wrap: wrap; }
+      .footer-copy { order: 3; width: 100%; }
+      .back-top { font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    :root {
+      color-scheme: light;
+      --primary: #0b1533;
+      --primary-light: #16244f;
+      --accent: #ff7a00;
+      --accent-hover: #ff8f1f;
+      --text: #101828;
+      --text-light: #667085;
+      --bg: #f8f9fc;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow-sm: 0 4px 10px rgba(16, 24, 40, 0.04);
+      --shadow-md: 0 10px 30px rgba(16, 24, 40, 0.08);
+      --shadow-lg: 0 20px 60px rgba(16, 24, 40, 0.12);
+      --shadow-accent: 0 15px 40px rgba(255, 122, 0, 0.25);
+      --radius-sm: 14px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-xl: 40px;
+      --container: 1280px;
+      --transition: all .35s ease;
+      --paper: var(--bg);
+      --panel: var(--white);
+      --panel-alt: #f1f4fa;
+      --ink: var(--text);
+      --muted: var(--text-light);
+      --line: var(--border);
+      --lime: var(--accent);
+      --blue: #4263a5;
+      --cyan: var(--accent);
+      --coral: var(--accent-hover);
+      --shadow: rgba(16, 24, 40, 0.12);
+      --serif: "Manrope", "Segoe UI", Arial, sans-serif;
+      --sans: "Manrope", "Segoe UI", Arial, sans-serif;
+      --mono: "Cascadia Code", "Courier New", monospace;
+      --page: min(var(--container), calc(100% - 40px));
+    }
+
+    html { scroll-padding-top: 110px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+    ::selection { background: rgba(255, 122, 0, .2); color: var(--primary); }
+    .section-heading { grid-template-columns: 1.1fr .9fr; gap: 42px; }
+    .section-heading h2 {
+      color: var(--primary);
+      font: 900 clamp(2.6rem, 6vw, 5rem)/1.05 var(--sans);
+      letter-spacing: -.055em;
+    }
+    .section-heading p { color: var(--text-light); font-size: 1rem; }
+    .small-kicker, .eyebrow { color: var(--accent); font-weight: 800; letter-spacing: .16em; }
+    .eyebrow::before { background: var(--accent); }
+
+    .site-header {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      width: min(1240px, 95%);
+      border: 0;
+      background: transparent;
+      transform: translateX(-50%);
+      backdrop-filter: none;
+    }
+    .header-inner {
+      width: 100%;
+      min-height: 68px;
+      padding: 12px 24px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(20px);
+    }
+    .wordmark, .wordmark small { color: var(--primary); }
+    .mark {
+      color: var(--white);
+      background: var(--primary);
+      box-shadow: none;
+    }
+    .main-nav { gap: clamp(18px, 2.7vw, 34px); }
+    .main-nav a, .lang-toggle { color: #4b5563; font-size: 13px; }
+    .main-nav a:hover, .lang-toggle:hover { color: var(--primary); }
+    .lang-toggle { border-color: var(--border); background: var(--white); }
+    .lang-toggle strong { color: var(--primary); }
+    .contact-link {
+      min-height: 44px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: var(--shadow-accent);
+    }
+    .contact-link:hover { border-color: transparent; background: var(--accent-hover); color: var(--white); box-shadow: var(--shadow-accent); }
+    .menu-toggle { border-color: var(--border); }
+    .menu-toggle::before, .menu-toggle::after { background: var(--primary); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 128px 0 80px;
+      border-bottom: 0;
+      background:
+        radial-gradient(circle at 85% 25%, rgba(255, 122, 0, .08), transparent 28%),
+        linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+    }
+    .hero::after { border-color: rgba(11, 21, 51, .08); box-shadow: 0 0 0 42px rgba(11, 21, 51, .025), 0 0 0 84px rgba(11, 21, 51, .015); }
+    .hero-grid { grid-template-columns: 1.2fr 1fr; gap: 64px; padding-top: 0; }
+    .agency-badge {
+      border-color: rgba(255, 122, 0, .2);
+      background: rgba(255, 122, 0, .08);
+      color: var(--primary);
+      font-family: var(--sans);
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: none;
+    }
+    .agency-badge::before { color: var(--accent); }
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 22px;
+      color: var(--primary);
+      font: 900 clamp(3.4rem, 7.2vw, 6.5rem)/.98 var(--sans);
+      letter-spacing: -.065em;
+    }
+    .agency-hero .hero-copy { max-width: 650px; color: var(--text-light); font-size: 1.08rem; }
+    .hero-benefits { max-width: 650px; }
+    .hero-benefits li { color: #475467; }
+    .hero-benefits li::before {
+      background: rgba(255, 122, 0, .09);
+      border-color: rgba(255, 122, 0, .2);
+      color: var(--accent);
+      box-shadow: none;
+    }
+    .button-primary, .button-secondary {
+      min-height: 60px;
+      padding: 0 26px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    .button-primary {
+      border: 0;
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: var(--shadow-accent);
+    }
+    .button-primary:hover { transform: translateY(-4px); background: var(--accent-hover); }
+    .button-secondary { border: 1px solid var(--border); background: var(--white); color: var(--primary); }
+    .button-secondary:hover { transform: translateY(-4px); border-color: var(--border); background: var(--white); box-shadow: var(--shadow-md); }
+    .button-primary span, .button-secondary span { font-size: inherit; }
+    .hero-panel {
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-panel strong { color: var(--primary); font-size: 1.25rem; letter-spacing: -.02em; text-transform: none; }
+    .hero-panel li { color: #475467; }
+    .hero-panel li::before { background: rgba(255, 122, 0, .1); color: var(--accent); }
+    .hero-quote { border-color: var(--accent); color: var(--text-light); }
+    .agency-stat { border-color: var(--border); border-radius: var(--radius-md); background: var(--white); box-shadow: var(--shadow-sm); }
+    .agency-stat strong { color: var(--primary); }
+    .agency-stat span { color: var(--text-light); }
+
+    .trust-strip { border-color: var(--border); background: var(--white); }
+    .trust-grid { gap: 16px; }
+    .trust-card, .why-card, .testimonial-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+    .why-section, .testimonial-section, .about-section, .faq-section { padding: 100px 0 24px; }
+    .why-grid { gap: 18px; }
+    .why-card { padding: 30px 24px; transition: var(--transition); }
+    .why-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .why-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      background: rgba(255, 122, 0, .08);
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: none;
+    }
+    .why-card h3, .service h3, .process-step h3 { color: var(--primary); font-family: var(--sans); font-weight: 800; letter-spacing: -.035em; }
+    .why-card h3 { font-size: 1.25rem; }
+    .why-card p, .service p, .process-step p { color: var(--text-light); }
+    .proof-strip { border-color: var(--border); background: #fff; }
+    .proof-label, .proof-item span, .project-index, .project-meta p { color: var(--text-light); }
+    .proof-item { border-color: var(--border); }
+    .proof-item b { color: var(--primary); }
+
+    .services-section { padding: 100px 0; background: var(--primary); color: var(--white); }
+    .services-section .section-heading h2 { color: var(--white); }
+    .services-section .section-heading p, .services-section .small-kicker { color: rgba(255, 255, 255, .72); }
+    .services-section .small-kicker { color: #ffae67; }
+    .service-grid { border-color: rgba(255, 255, 255, .18); }
+    .service {
+      min-height: 250px;
+      padding: 30px;
+      border-color: rgba(255, 255, 255, .18);
+      transition: var(--transition);
+    }
+    .service:hover { background: rgba(255, 255, 255, .07); transform: translateY(-4px); }
+    .service-top { color: rgba(255, 255, 255, .65); font-family: var(--sans); font-weight: 700; }
+    .service-symbol { border-color: rgba(255, 122, 0, .5); color: #ff9a42; }
+    .service h3 { margin-top: 30px; color: var(--white); font-size: 1.4rem; }
+    .service p { color: rgba(255, 255, 255, .7); font-size: 14px; }
+
+    .process-section { padding: 100px 0; }
+    .process-grid { border-color: var(--border); }
+    .process-step + .process-step { border-color: var(--border); }
+    .process-number { color: var(--accent); }
+    .admin-section {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--white);
+    }
+    .admin-section .small-kicker { color: #ffae67; }
+    .admin-copy h2 { color: var(--white); font-family: var(--sans); font-weight: 900; letter-spacing: -.055em; }
+    .admin-copy > p { color: rgba(255, 255, 255, .72); }
+    .inline-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .inline-list li { color: rgba(255, 255, 255, .9); }
+    .inline-list li::before { color: #ff9a42; }
+    .admin-screen { border-color: rgba(255, 255, 255, .2); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); }
+    .conclusion-panel { border-color: rgba(255, 122, 0, .45); background: rgba(255, 122, 0, .12); }
+    .conclusion-panel p { color: var(--white); font-weight: 800; }
+
+    .work-section { padding: 100px 0; }
+    .project-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .project-visual { min-height: 310px; }
+    .project-meta { padding: 26px; }
+    .project-meta h3 { color: var(--primary); font: 800 1.75rem/1.2 var(--sans); letter-spacing: -.04em; }
+    .project-results li, .portfolio-strip span, .project-tags span { border-color: var(--border); background: var(--bg); color: #475467; }
+    .project-open { border-color: var(--border); border-radius: 50%; color: var(--primary); }
+    .project-open:hover { background: var(--accent); color: var(--white); }
+    .about-section { padding-block: 90px; }
+    .about-layout {
+      padding: 70px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    .about-media { border-radius: var(--radius-lg); }
+    .about-copy h3 { color: var(--primary); font-family: var(--sans); font-weight: 900; letter-spacing: -.055em; }
+    .about-copy p { color: var(--text-light); }
+    .about-list li { color: #475467; }
+    .about-list li::before { background: var(--accent); box-shadow: none; }
+    .trusted-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 30px; }
+    .trusted-list li { color: #475467; }
+    .trusted-list li::before { color: var(--accent); }
+    .testimonial-grid { gap: 18px; }
+    .testimonial-card { padding: 32px; transition: var(--transition); }
+    .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .testimonial-card p { color: #344054; }
+    .testimonial-card footer { color: var(--text-light); }
+    .stars { color: #ffb800; }
+    .faq-item { border-color: var(--border); border-radius: var(--radius-md); background: var(--white); box-shadow: var(--shadow-sm); }
+    .faq-item summary { color: var(--primary); }
+    .faq-item summary::after { color: var(--accent); }
+    .faq-item p { color: var(--text-light); }
+
+    .contact-section { border: 0; background: var(--bg); }
+    .contact-layout {
+      gap: 60px;
+      padding: 72px;
+      border-radius: var(--radius-xl);
+      background: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-copy .small-kicker { color: #ffae67; }
+    .contact-copy h2 { color: var(--white); font: 900 clamp(2.8rem, 5.5vw, 5rem)/1.05 var(--sans); letter-spacing: -.06em; }
+    .contact-copy > p { color: rgba(255, 255, 255, .75); font-size: 1rem; }
+    .contact-details a { color: var(--white); }
+    .contact-details a span:first-child { color: #ff9a42; }
+    .contact-form {
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+    .field label { color: #475467; font-family: var(--sans); font-size: 12px; font-weight: 700; }
+    .field input, .field textarea, .field select {
+      min-height: 56px;
+      padding: 0 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .field textarea { min-height: 140px; padding: 16px 18px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #98a2b3; }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(255, 122, 0, .12); outline: 0; }
+    .form-note { color: var(--text-light); }
+    .site-footer { padding: 64px 0 30px; background: var(--white); color: var(--text); border-top: 1px solid var(--border); }
+    .footer-column h4 { color: var(--text-light); }
+    .footer-column a, .footer-column p { color: #475467; }
+    .footer-column a:hover { color: var(--accent); }
+    .footer-brand { color: var(--primary) !important; font-size: 1rem; }
+    .footer-brand span { color: var(--accent); }
+    .footer-meta { border-color: var(--border); }
+    .footer-copy, .back-top { color: var(--text-light); }
+    .back-top span { color: var(--accent); }
+
+    @media (max-width: 991px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 42px; }
+      .hero-copy-wrap { max-width: 760px; }
+      .agency-grid { max-width: 760px; }
+      .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-layout { padding: 48px; }
+      .contact-layout { padding: 48px; grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+    @media (max-width: 680px) {
+      :root { --page: calc(100% - 36px); }
+      html { scroll-padding-top: 88px; }
+      .site-header { top: 10px; width: calc(100% - 24px); }
+      .header-inner { min-height: 60px; padding: 9px 13px; border-radius: 24px; gap: 9px; }
+      .wordmark { font-size: 12px; }
+      .header-actions { gap: 8px; }
+      .contact-link { min-height: 38px; padding-inline: 12px; font-size: 10px; }
+      .lang-toggle { padding: 7px 9px; font-size: 10px; }
+      .menu-toggle { width: 36px; height: 36px; }
+      .main-nav {
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        padding: 10px 18px 16px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--white);
+        box-shadow: var(--shadow-md);
+      }
+      .main-nav a { color: var(--primary); border-color: var(--border); }
+      .hero { min-height: auto; padding: 120px 0 64px; }
+      .hero-grid { gap: 34px; }
+      .agency-badge { padding: 9px 12px; font-size: 9px; }
+      .hero h1 { font-size: clamp(3rem, 12vw, 4.5rem); letter-spacing: -.06em; }
+      .agency-hero .hero-copy { font-size: 1rem; }
+      .hero-benefits { grid-template-columns: 1fr; gap: 12px; }
+      .hero-panel { padding: 24px; }
+      .agency-grid { gap: 12px; }
+      .agency-stat { padding: 16px; }
+      .section-heading { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+      .section-heading h2 { font-size: clamp(2.4rem, 11vw, 3.5rem); }
+      .why-section, .testimonial-section, .about-section, .faq-section, .work-section, .process-section, .services-section { padding: 70px 0; }
+      .why-grid, .service-grid, .testimonial-grid, .trusted-list { grid-template-columns: 1fr; }
+      .service { min-height: 0; padding: 24px; }
+      .work-grid { grid-template-columns: 1fr; gap: 30px; }
+      .project-visual { min-height: 250px; }
+      .project-meta { padding: 20px; }
+      .about-layout { grid-template-columns: 1fr; gap: 30px; padding: 24px; border-radius: var(--radius-lg); }
+      .about-media { min-height: 300px; }
+      .trusted-list { gap: 12px; }
+      .admin-section { padding: 72px 0; }
+      .inline-list { grid-template-columns: 1fr; }
+      .admin-copy h2 { font-size: clamp(2.7rem, 11vw, 3.6rem); }
+      .contact-section { padding: 60px 0; }
+      .contact-layout { grid-template-columns: 1fr; gap: 28px; padding: 24px; border-radius: var(--radius-lg); }
+      .contact-copy h2 { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+      .contact-form { padding: 22px; }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; }
+      .footer-grid .footer-column:first-child { grid-column: 1 / -1; }
+      .footer-meta { align-items: flex-start; }
+      .footer-copy { font-size: 8px; }
+    }
+  </style>
 </head>
 <body>
-<header><div class="wrap nav">
-<a class="logo" href="#top">Fabi<b>.</b>Sites &amp; Codes</a>
-<nav id="mn"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#admin">Admin panels</a><a href="#process">Process</a><a href="#contact">Contact</a></nav>
-<div class="tools"><button class="btn g sm menu-btn" id="mb" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mn">✦</button><button class="btn g sm" id="lg" type="button" aria-label="Language">EN</button><a class="btn p sm hd-cta" href="#contact">Start a project</a></div>
-</div></header>
-
-<main id="top">
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <span class="tag"><i></i>Now booking new projects</span>
-      <h1>Your Business. <em>Built to Grow.</em></h1>
-      <p class="lead">Modern websites and custom admin panels designed to help your business stand out, work smarter, and grow online.</p>
-      <div class="cta">
-        <a class="btn p" href="#contact">Start Your Project →</a>
-        <a class="btn g" href="#services">Explore Our Services</a>
-      </div>
-      <div class="stats">
-        <div><b>Custom-built</b><span>Designed for your business</span></div>
-        <div><b>Mobile-first</b><span>Responsive on every screen</span></div>
-        <div><b>Admin panels</b><span>Available when you need them</span></div>
+  <header class="site-header">
+    <div class="page header-inner">
+      <a class="wordmark" href="#top" aria-label="Fabi Sites and Codes, fillimi" data-sq-aria-label="Fabi Sites and Codes, fillimi" data-en-aria-label="Fabi Sites and Codes, home">
+        <span class="mark">F.</span><span>Fabi Sites <small>&amp; Codes</small></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Navigimi kryesor" data-sq-aria-label="Navigimi kryesor" data-en-aria-label="Main navigation">
+        <a href="#why-us" data-sq="Pse ne" data-en="Why us">Pse ne</a>
+        <a href="#services" data-sq="Shërbimet" data-en="Services">Shërbimet</a>
+        <a href="#projects" data-sq="Projektet" data-en="Projects">Projektet</a>
+        <a href="#process" data-sq="Procesi" data-en="Process">Procesi</a>
+        <a href="#contact" data-sq="Kontakt" data-en="Contact">Kontakt</a>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" id="language-toggle" type="button" aria-label="Switch language to Albanian"> <strong>EN</strong> / SQ </button>
+        <a class="contact-link" href="#contact"><span data-sq="Nis projektin" data-en="Start a project">Nis projektin</span><span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Hap menunë" aria-expanded="false" aria-controls="main-nav"></button>
       </div>
     </div>
-    <div class="dash rv" aria-label="Illustrative admin dashboard preview">
-      <div class="dots"><i></i><i></i><i></i></div>
-      <div class="kp">
-        <div><small>Orders</small><b>1,284</b></div>
-        <div><small>Visitors</small><b>38.2k</b></div>
-        <div><small>Growth</small><b>+24%</b></div>
+  </header>
+
+  <main id="top">
+    <section class="hero agency-hero">
+      <div class="page hero-grid">
+        <div class="hero-copy-wrap">
+          <div class="agency-badge" data-sq="E besuar nga bizneset që duan të rriten online" data-en="Trusted by businesses that want to grow online">E besuar nga bizneset që duan të rriten online</div>
+          <h1 data-sq="Ndërtojmë faqe interneti që fitojnë besim, sjellin klientë dhe ndihmojnë bizneset të rriten." data-en="We Build Websites That Earn Trust, Generate Leads, and Help Businesses Grow.">We Build Websites That Earn Trust, Generate Leads, and Help Businesses Grow.</h1>
+          <p class="hero-copy" data-sq="Faqja juaj e internetit është shpesh kontakti i parë i klientëve me biznesin tuaj. Ne krijojmë faqe interneti të shpejta, dyqane online dhe panele administrimi të personalizuara, që e paraqesin biznesin tuaj me profesionalizëm, ndërtojnë besueshmëri dhe i kthejnë vizitorët në klientë." data-en="Your website is often the first interaction customers have with your business. We create high-performance websites, e-commerce stores, and custom admin panels that help companies look professional, build credibility, and turn visitors into paying customers.">Your website is often the first interaction customers have with your business. We create high-performance websites, e-commerce stores, and custom admin panels that help companies look professional, build credibility, and turn visitors into paying customers.</p>
+          <ul class="hero-benefits">
+            <li data-sq="Dorëzim profesional" data-en="Professional Delivery">Professional Delivery</li>
+            <li data-sq="Përvojë e krijuar fillimisht për celular" data-en="Mobile-First Experience">Mobile-First Experience</li>
+            <li data-sq="Strukturë e optimizuar për SEO" data-en="SEO-Optimized Structure">SEO-Optimized Structure</li>
+            <li data-sq="Mbështetje dhe mirëmbajtje e vazhdueshme" data-en="Ongoing Support &amp; Maintenance">Ongoing Support &amp; Maintenance</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="button-primary" href="#contact"><span data-sq="🚀 Nisni projektin tuaj" data-en="🚀 Start Your Project">🚀 Start Your Project</span><span aria-hidden="true">↗</span></a>
+            <a class="button-secondary" href="#projects"><span data-sq="Shihni punët tona →" data-en="View Our Work →">View Our Work →</span></a>
+          </div>
+        </div>
+        <div class="hero-copy-wrap">
+          <div class="hero-panel reveal">
+            <strong data-sq="Proces i besueshëm. Komunikim i qartë. Dorëzim në kohë." data-en="Trusted Process. Clear Communication. On-Time Delivery.">Trusted Process. Clear Communication. On-Time Delivery.</strong>
+            <ul>
+              <li data-sq="Profesionalizëm i plotë" data-en="Professional delivery">Profesionalizëm i plotë</li>
+              <li data-sq="Qasje e qartë dhe e shpejtë" data-en="Clear communication">Qasje e qartë dhe e shpejtë</li>
+              <li data-sq="Dizajn i fokusuar tek biznesi" data-en="Strategy-led design">Dizajn i fokusuar tek biznesi</li>
+              <li data-sq="Mbështetje pas lançimit" data-en="Support after launch">Mbështetje pas lançimit</li>
+            </ul>
+            <div class="hero-quote" data-sq="Nga bizneset e vogla te markat në rritje, çdo projekt trajtohet me profesionalizëm, transparencë dhe vëmendje ndaj detajeve." data-en="From small businesses to growing brands, every project is treated with professionalism, transparency, and attention to detail.">From small businesses to growing brands, every project is treated with professionalism, transparency, and attention to detail.</div>
+          </div>
+          <div class="agency-grid">
+            <div class="agency-stat reveal">
+              <strong>100%</strong>
+              <span data-sq="Qasje e qartë" data-en="Clear communication">Qasje e qartë</span>
+            </div>
+            <div class="agency-stat reveal">
+              <strong>24h</strong>
+              <span data-sq="Përgjigje" data-en="Response time">Përgjigje</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="bars" aria-hidden="true">
-        <i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:43%"></i>
-        <i style="--h:68%"></i><i style="--h:56%"></i><i style="--h:78%"></i>
-        <i style="--h:64%"></i><i style="--h:92%"></i><i style="--h:74%"></i>
+    </section>
+
+    <section class="why-section" id="why-us">
+      <div class="page">
+        <div class="section-heading reveal">
+          <div>
+            <p class="small-kicker" data-sq="PSE NA ZGJEDHIN BIZNESET" data-en="WHY BUSINESSES CHOOSE US">WHY BUSINESSES CHOOSE US</p>
+            <h2 data-sq="Më shumë se dizajn. Zgjidhje për biznesin." data-en="More than design. Built for business.">More than design. Built for business.</h2>
+          </div>
+          <p data-sq="Një faqe interneti duhet të bëjë më shumë sesa të duket bukur. Ajo duhet ta paraqesë markën tuaj me profesionalizëm, të krijojë besim që në çastin e parë dhe t’i sjellë biznesit mundësi të reja çdo ditë. Prandaj, çdo projekt ndërtohet duke pasur parasysh strategjinë, performancën, përvojën e përdoruesit dhe rritjen afatgjatë." data-en="A website should be more than visually appealing. It should represent your brand professionally, communicate trust instantly, and help your business generate opportunities every day. That's why every project is built with strategy, performance, user experience, and long-term growth in mind.">A website should be more than visually appealing. It should represent your brand professionally, communicate trust instantly, and help your business generate opportunities every day. That's why every project is built with strategy, performance, user experience, and long-term growth in mind.</p>
+        </div>
+
+        <div class="why-grid">
+          <article class="why-card reveal">
+            <div class="why-icon">01</div>
+            <h3 data-sq="Profesional që në fillim" data-en="Professional From Day One">Professional From Day One</h3>
+            <p data-sq="Komunikim i qartë, afate transparente dhe proces i organizuar që nga biseda e parë deri në publikim." data-en="Clear communication, transparent timelines, and a structured process from the first conversation to launch.">Clear communication, transparent timelines, and a structured process from the first conversation to launch.</p>
+          </article>
+          <article class="why-card reveal">
+            <div class="why-icon">02</div>
+            <h3 data-sq="Ndërtuar sipas synimeve tuaja" data-en="Built Around Your Goals">Built Around Your Goals</h3>
+            <p data-sq="Çdo biznes është i ndryshëm. Faqja juaj duhet të pasqyrojë synimet, klientët dhe vizionin tuaj." data-en="Every business is different. Your website should reflect your unique goals, customers, and vision.">Every business is different. Your website should reflect your unique goals, customers, and vision.</p>
+          </article>
+          <article class="why-card reveal">
+            <div class="why-icon">03</div>
+            <h3 data-sq="Të shpejta, të sigurta dhe të besueshme" data-en="Fast, Secure &amp; Reliable">Fast, Secure &amp; Reliable</h3>
+            <p data-sq="Ndërtohen me teknologji moderne dhe praktika të mira për shpejtësi, siguri dhe qëndrueshmëri." data-en="Built using modern technologies and best practices to ensure speed, security, and stability.">Built using modern technologies and best practices to ensure speed, security, and stability.</p>
+          </article>
+          <article class="why-card reveal">
+            <div class="why-icon">04</div>
+            <h3 data-sq="Mbështetje edhe pas publikimit" data-en="Support Beyond Launch">Support Beyond Launch</h3>
+            <p data-sq="Publikimi i faqes nuk është fundi. Është fillimi i rritjes suaj në internet." data-en="Launching your website isn't the finish line. It's the beginning of your online growth.">Launching your website isn't the finish line. It's the beginning of your online growth.</p>
+          </article>
+        </div>
       </div>
-      <div class="rows">
-        <div><span>New order #2041</span><em>Paid</em></div>
-        <div><span>Product updated</span><em>Live</em></div>
-        <div><span>New message</span><em>Unread</em></div>
+    </section>
+
+    <section class="services-section" id="services">
+      <div class="page">
+        <div class="section-heading reveal">
+          <div>
+            <p class="small-kicker" data-sq="SHËRBIMET TONA" data-en="OUR SERVICES">OUR SERVICES</p>
+            <h2 data-sq="Zgjidhje digjitale që ndihmojnë bizneset të ecin përpara." data-en="Digital solutions built to move businesses forward.">Digital solutions built to move businesses forward.</h2>
+          </div>
+          <p data-sq="Qoftë një faqe interneti profesionale, një dyqan online i zgjerueshëm apo një sistem menaxhimi i personalizuar, ne ofrojmë zgjidhje të ndërtuara për synimet reale të biznesit." data-en="Whether you need a professional website, a scalable e-commerce platform, or a custom management system, we deliver solutions designed around real business objectives.">Whether you need a professional website, a scalable e-commerce platform, or a custom management system, we deliver solutions designed around real business objectives.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service reveal">
+            <div class="service-top"><span data-sq="Faqe interneti për biznese" data-en="Business Websites">Business Websites</span><span class="service-symbol">↗</span></div>
+            <h3 data-sq="Faqe interneti për biznese" data-en="Business Websites">Business Websites</h3>
+            <p data-sq="Faqe profesionale që krijojnë besueshmëri, përcjellin qartë vlerën tuaj dhe lënë përshtypje më të mirë që në fillim." data-en="Professional websites that establish credibility, communicate value clearly, and create stronger first impressions.">Professional websites that establish credibility, communicate value clearly, and create stronger first impressions.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-top"><span data-sq="Tregti elektronike" data-en="E-Commerce">E-Commerce</span><span class="service-symbol">+</span></div>
+            <h3 data-sq="Dyqane online" data-en="E-Commerce Stores">E-Commerce Stores</h3>
+            <p data-sq="Dyqane online të fuqishme, të krijuara për të rritur shitjet dhe për t’u ofruar klientëve një përvojë të lehtë blerjeje." data-en="Powerful online stores designed to increase sales and give customers a seamless buying experience.">Powerful online stores designed to increase sales and give customers a seamless buying experience.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-top"><span data-sq="Panele administrimi" data-en="Dashboards">Dashboards</span><span class="service-symbol">⌘</span></div>
+            <h3 data-sq="Panele administrimi të personalizuara" data-en="Custom Admin Panels">Custom Admin Panels</h3>
+            <p data-sq="Menaxhoni biznesin, produktet, porositë, klientët dhe përmbajtjen përmes një paneli të përshtatur posaçërisht me mënyrën tuaj të punës." data-en="Manage your business, products, orders, customers, and content through a dashboard designed specifically for your workflow.">Manage your business, products, orders, customers, and content through a dashboard designed specifically for your workflow.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-top"><span data-sq="SEO dhe performancë" data-en="SEO &amp; Performance">SEO &amp; Performance</span><span class="service-symbol">↯</span></div>
+            <h3 data-sq="Optimizim për SEO dhe performancë" data-en="SEO &amp; Performance Optimization">SEO &amp; Performance Optimization</h3>
+            <p data-sq="Faqe që ngarkohen shpejt, optimizohen për motorët e kërkimit dhe funksionojnë mirë në çdo pajisje." data-en="Fast-loading websites optimized for search engines and built to perform across every device.">Fast-loading websites optimized for search engines and built to perform across every device.</p>
+          </article>
+        </div>
       </div>
-      <p class="dash-note">Illustrative dashboard preview · Demo data</p>
+    </section>
+
+    <section class="process-section" id="process">
+      <div class="page">
+        <div class="section-heading reveal">
+          <div>
+            <p class="small-kicker" data-sq="PROCESI YNË" data-en="OUR PROCESS">OUR PROCESS</p>
+            <h2 data-sq="Proces i qartë. Rezultat që të jep siguri." data-en="A clear process. A confident result.">A clear process. A confident result.</h2>
+          </div>
+          <p data-sq="Projektet e suksesshme nisin me mirëkuptim. Procesi ynë siguron që çdo vendim të marrë parasysh synimet e biznesit tuaj." data-en="Successful projects begin with understanding. Our process ensures every decision is made with your business goals in mind.">Successful projects begin with understanding. Our process ensures every decision is made with your business goals in mind.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step reveal"><span class="process-number">01</span><h3 data-sq="Njohja me projektin" data-en="Discovery">Discovery</h3><p data-sq="Kuptojmë biznesin, audiencën, sfidat dhe mundësitë tuaja." data-en="Understanding your business, audience, challenges, and opportunities.">Understanding your business, audience, challenges, and opportunities.</p></article>
+          <article class="process-step reveal"><span class="process-number">02</span><h3 data-sq="Strategji dhe dizajn" data-en="Strategy &amp; Design">Strategy &amp; Design</h3><p data-sq="Krijojmë një përvojë profesionale që pasqyron markën tuaj dhe angazhon më mirë përdoruesit." data-en="Creating a professional experience that reflects your brand and improves user engagement.">Creating a professional experience that reflects your brand and improves user engagement.</p></article>
+          <article class="process-step reveal"><span class="process-number">03</span><h3 data-sq="Zhvillimi" data-en="Development">Development</h3><p data-sq="I kthejmë dizajnet e miratuara në zgjidhje të përshtatshme për çdo pajisje, të sigurta dhe të zgjerueshme." data-en="Transforming approved designs into responsive, secure, and scalable solutions.">Transforming approved designs into responsive, secure, and scalable solutions.</p></article>
+          <article class="process-step reveal"><span class="process-number">04</span><h3 data-sq="Publikimi dhe rritja" data-en="Launch &amp; Growth">Launch &amp; Growth</h3><p data-sq="Testim, publikim, optimizim dhe mbështetje edhe pas lançimit." data-en="Testing, deployment, optimization, and support after launch.">Testing, deployment, optimization, and support after launch.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-section" id="dashboard">
+      <div class="page admin-layout">
+        <div class="admin-copy reveal">
+          <p class="small-kicker" data-sq="SISTEME PËR MENAXHIMIN E BIZNESIT" data-en="BUSINESS MANAGEMENT SYSTEMS">BUSINESS MANAGEMENT SYSTEMS</p>
+          <h2 data-sq="Mos e menaxhoni më biznesin manualisht." data-en="Stop managing your business manually.">Stop managing your business manually.</h2>
+          <p data-sq="Merrni kontroll të plotë mbi veprimtarinë tuaj me një panel të fuqishëm, të përshtatur sipas mënyrës si funksionon biznesi juaj. Ndiqni performancën, menaxhoni klientët e porositë dhe shihni të dhënat e rëndësishme në një vend të vetëm." data-en="Gain complete control over your operations through a powerful dashboard tailored to the way your business works. Monitor performance, manage customers, track orders, and access insights from one place.">Gain complete control over your operations through a powerful dashboard tailored to the way your business works. Monitor performance, manage customers, track orders, and access insights from one place.</p>
+          <ul class="inline-list">
+            <li data-sq="Produkte dhe inventar" data-en="Products &amp; Inventory">Products &amp; Inventory</li>
+            <li data-sq="Menaxhimi i klientëve" data-en="Customer Management">Customer Management</li>
+            <li data-sq="Porosi dhe pagesa" data-en="Orders &amp; Payments">Orders &amp; Payments</li>
+            <li data-sq="Analitika e biznesit" data-en="Business Analytics">Business Analytics</li>
+            <li data-sq="Leje për ekipin" data-en="Team Permissions">Team Permissions</li>
+            <li data-sq="Raporte dhe të dhëna" data-en="Reports &amp; Insights">Reports &amp; Insights</li>
+            <li data-sq="Përdorim nga celulari" data-en="Mobile Access">Mobile Access</li>
+            <li data-sq="Autentikim i sigurt" data-en="Secure Authentication">Secure Authentication</li>
+          </ul>
+          <div class="conclusion-panel reveal">
+            <p data-sq="Kërkoni një panel administrimi të personalizuar →" data-en="Request a Custom Dashboard →">Request a Custom Dashboard →</p>
+          </div>
+        </div>
+        <div class="admin-screen reveal">
+          <div class="admin-screen-top"><strong data-sq="Përmbledhje e veprimtarisë" data-en="Operations Overview">Operations Overview</strong><span data-sq="TË DHËNA SHEMBULL · DEMO" data-en="SAMPLE DATA · DEMO">TË DHËNA SHEMBULL · DEMO</span></div>
+          <p class="sample-note" data-sq="Shembull paneli vetëm për demonstrim" data-en="Dashboard example for demo purposes only">Dashboard example for demo purposes only</p>
+          <div class="admin-screen-body"><div class="admin-side"><i></i><i></i><i></i><i></i><i></i></div><div class="admin-main"><p class="admin-main-title" data-sq="Përmbledhje" data-en="Overview">Overview</p><div class="admin-cards"><div class="admin-stat"><small data-sq="Shitjet" data-en="Sales">Sales</small><strong>€24.8k</strong></div><div class="admin-stat"><small data-sq="Porositë" data-en="Orders">Orders</small><strong>184</strong></div><div class="admin-stat"><small data-sq="Klientët" data-en="Customers">Customers</small><strong>1,260</strong></div></div><div class="admin-table"><span data-sq="POROSIA" data-en="ORDER">ORDER</span><span data-sq="DATA" data-en="DATE">DATE</span><span data-sq="STATUSI" data-en="STATUS">STATUS</span><span>#2049 · Business Pro</span><span>03 Nov</span><span class="admin-status" data-sq="Paguar" data-en="Paid">Paid</span><span>#2048 · North Studio</span><span>02 Nov</span><span class="admin-status" data-sq="Paguar" data-en="Paid">Paid</span><span>#2047 · Urban Form</span><span>01 Nov</span><span data-sq="Në pritje" data-en="Pending">Pending</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="projects">
+      <div class="page">
+        <div class="section-heading reveal">
+          <div>
+            <p class="small-kicker" data-sq="PROJEKTE TË PËZGJEDHURA" data-en="SELECTED WORK">SELECTED WORK</p>
+            <h2 data-sq="Të ndërtuara për biznese reale dhe synime konkrete." data-en="Built for real businesses with real goals.">Built for real businesses with real goals.</h2>
+          </div>
+          <p data-sq="Çdo projekt është një bashkëpunim me një biznes që na ka besuar forcimin e pranisë së tij digjitale. Qëllimi ynë është i thjeshtë: të krijojmë punë profesionale, të besueshme dhe që mbështet rritjen e biznesit." data-en="Every project represents a partnership with a business that trusted us to strengthen its digital presence. Our focus has always been simple: deliver work that looks professional, performs reliably, and supports business growth.">Every project represents a partnership with a business that trusted us to strengthen its digital presence. Our focus has always been simple: deliver work that looks professional, performs reliably, and supports business growth.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="project-card reveal">
+            <a class="project-visual dj" href="https://dj-krenyy.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Projekti DJ KRENY" data-sq-aria-label="Projekti DJ KRENY" data-en-aria-label="DJ KRENY project">
+              <div class="dj-window"><div class="browser-bar"><i></i><i></i><i></i><span class="browser-url"></span></div><div class="dj-content"><div><small>DJ · PRODUCER · LIVE</small><strong>KRENY</strong><span>FEEL THE FREQUENCY</span></div></div></div>
+            </a>
+            <div class="project-meta">
+              <div>
+                <span class="project-index" data-sq="01 / FAQE PËR EVENTE" data-en="01 / EVENT WEBSITE">01 / EVENT WEBSITE</span>
+                <h3>DJ KRENY</h3>
+                <p data-sq="Faqe për evente me identitet vizual të dallueshëm dhe proces të thjeshtë rezervimi për performanca live." data-en="Event website with strong visual identity and a smooth booking experience for live events and performances.">Event website with strong visual identity and a smooth booking experience for live events and performances.</p>
+                <div class="portfolio-strip"><span data-sq="Dizajn përshtatës" data-en="Responsive Design">Responsive Design</span><span data-sq="Integrim rezervimesh" data-en="Booking Integration">Booking Integration</span></div>
+              </div>
+              <a class="project-open" href="https://dj-krenyy.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Hap projektin DJ KRENY" data-sq-aria-label="Hap projektin DJ KRENY" data-en-aria-label="Open DJ KRENY project">↗</a>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <a class="project-visual biz" href="https://biz-promo.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Projekti BizPromo.AL" data-sq-aria-label="Projekti BizPromo.AL" data-en-aria-label="BizPromo.AL project">
+              <div class="biz-window"><div class="browser-bar"><i></i><i></i><i></i><span class="browser-url" style="background:rgb(23 29 50 / 10%)"></span></div><div class="biz-content"><div><div class="biz-top">BIZPROMO.AL <span data-sq="KRIJO BESIM ONLINE" data-en="BUILD TRUST ONLINE">BUILD TRUST ONLINE</span></div><h3>Promovo më<br>qartë.</h3><p data-sq="Faqe biznesi e krijuar për më shumë qartësi, besim dhe kontakte nga klientët." data-en="Business website built to increase clarity, trust, and lead generation.">Business website built to increase clarity, trust, and lead generation.</p></div><div class="biz-art"><i></i></div></div></div>
+            </a>
+            <div class="project-meta">
+              <div>
+                <span class="project-index" data-sq="02 / FAQE BIZNESI" data-en="02 / BUSINESS WEBSITE">02 / BUSINESS WEBSITE</span>
+                <h3>BizPromo.AL</h3>
+                <p data-sq="Faqe biznesi që i paraqet shërbimet më qartë, rrit besueshmërinë dhe ndihmon në krijimin e kontakteve të reja." data-en="Business website designed to make services clearer, more credible, and more conversion-focused for local audiences.">Business website designed to make services clearer, more credible, and more conversion-focused for local audiences.</p>
+                <div class="portfolio-strip"><span data-sq="Optimizim SEO" data-en="SEO Optimization">SEO Optimization</span><span data-sq="Gjenerim klientësh" data-en="Lead Generation">Lead Generation</span></div>
+              </div>
+              <a class="project-open" href="https://biz-promo.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Hap projektin BizPromo.AL" data-sq-aria-label="Hap projektin BizPromo.AL" data-en-aria-label="Open BizPromo.AL project">↗</a>
+            </div>
+          </article>
+        </div>
+        <div class="hero-actions" style="margin-top:24px;"><a class="button-secondary" href="#contact"><span data-sq="Shihni projekte të tjera →" data-en="Explore More Projects →">Explore More Projects →</span></a></div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="page about-layout">
+        <div class="about-media reveal"><div class="about-badge" data-sq="Fabi · Zhvillues" data-en="Fabi · Developer">Fabi · Developer</div></div>
+        <div class="about-copy reveal">
+          <p class="small-kicker" data-sq="RRETH FABI SITES &amp; CODES" data-en="ABOUT FABI SITES &amp; CODES">ABOUT FABI SITES &amp; CODES</p>
+          <h3 data-sq="Ndihmojmë bizneset të krijojnë një prani digjitale më të fortë." data-en="Helping businesses build a stronger digital presence.">Helping businesses build a stronger digital presence.</h3>
+          <p data-sq="Fabi Sites &amp; Codes u krijua për t’i ndihmuar bizneset të prezantohen me siguri në internet. Përmes dizajnit të menduar, zhvillimit të besueshëm dhe zgjidhjeve të fokusuara te biznesi, krijojmë përvoja digjitale që ndërtojnë besim dhe mbështesin rritjen afatgjatë. Çdo projekt trajtohet me profesionalizëm, kujdes ndaj detajeve dhe përkushtim për të dorëzuar punë me të cilën krenohemi." data-en="Fabi Sites &amp; Codes was created to help businesses present themselves online with confidence. Through thoughtful design, reliable development, and business-focused solutions, we create digital experiences that build trust and support long-term growth. Every project is approached with professionalism, attention to detail, and a commitment to delivering work we're proud to put our name behind.">Fabi Sites &amp; Codes was created to help businesses present themselves online with confidence. Through thoughtful design, reliable development, and business-focused solutions, we create digital experiences that build trust and support long-term growth. Every project is approached with professionalism, attention to detail, and a commitment to delivering work we're proud to put our name behind.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Angazhimi ynë" data-sq-aria-label="Angazhimi ynë" data-en-aria-label="Our commitment">
+      <div class="page">
+        <div class="section-heading reveal" style="margin-bottom:24px;">
+          <div>
+            <p class="small-kicker" data-sq="ANGAZHIMI YNË" data-en="OUR COMMITMENT">OUR COMMITMENT</p>
+            <h2 data-sq="Çfarë mund të prisni nga bashkëpunimi me ne." data-en="What you can expect when working with us.">What you can expect when working with us.</h2>
+          </div>
+        </div>
+        <ul class="trusted-list reveal">
+          <li data-sq="Komunikim i qartë gjatë gjithë projektit" data-en="Clear communication throughout the project">Clear communication throughout the project</li>
+          <li data-sq="Çmime transparente, pa surpriza" data-en="Transparent pricing with no surprises">Transparent pricing with no surprises</li>
+          <li data-sq="Dizajn modern dhe përshtatës" data-en="Modern, responsive design">Modern, responsive design</li>
+          <li data-sq="Afate të besueshme për projektin" data-en="Reliable project timelines">Reliable project timelines</li>
+          <li data-sq="Zhvillim me performancë të lartë" data-en="High-performance development">High-performance development</li>
+          <li data-sq="Mbështetje dhe këshillim i vazhdueshëm" data-en="Ongoing support and guidance">Ongoing support and guidance</li>
+          <li data-sq="Kujdes ndaj çdo detaji" data-en="Attention to every detail">Attention to every detail</li>
+          <li data-sq="Përkushtim i sinqertë ndaj suksesit tuaj" data-en="A genuine commitment to your success">A genuine commitment to your success</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="testimonial-section">
+      <div class="page">
+        <div class="section-heading reveal">
+          <div>
+            <p class="small-kicker" data-sq="PËRSHTYPJET E KLIENTËVE" data-en="CLIENT FEEDBACK">CLIENT FEEDBACK</p>
+            <h2 data-sq="Biznese që na besojnë dhe vlerësojnë cilësinë." data-en="Trusted by businesses that expect quality.">Trusted by businesses that expect quality.</h2>
+          </div>
+          <p data-sq="Projektet e mira ndërtohen mbi besimin, komunikimin dhe përkushtimin e vazhdueshëm. Ja çfarë thonë klientët për bashkëpunimin me Fabi Sites &amp; Codes." data-en="Great projects are built on trust, communication, and consistent delivery. Here's what clients have to say about working with Fabi Sites &amp; Codes.">Great projects are built on trust, communication, and consistent delivery. Here's what clients have to say about working with Fabi Sites &amp; Codes.</p>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial-card reveal"><div class="stars" aria-label="5 yje" data-sq-aria-label="5 yje" data-en-aria-label="5 stars">★★★★★</div><p data-sq="I shpejtë, profesional dhe i lehtë për t’u bashkëpunuar." data-en="Fast, professional and easy to work with.">Fast, professional and easy to work with.</p><footer class="testimonial-author"><span class="testimonial-name">dj_kreny</span><span class="verified-badge" aria-label="Klient i verifikuar" data-sq-aria-label="Klient i verifikuar" data-en-aria-label="Verified client">✓</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars" aria-label="5 yje" data-sq-aria-label="5 yje" data-en-aria-label="5 stars">★★★★★</div><p data-sq="Më në fund, faqja jonë duket si një biznes i vërtetë." data-en="Our website finally looks like a real business.">Our website finally looks like a real business.</p><footer class="testimonial-author"><span class="testimonial-name">bizpromob</span><span class="verified-badge" aria-label="Klient i verifikuar" data-sq-aria-label="Klient i verifikuar" data-en-aria-label="Verified client">✓</span></footer></article>
+          <article class="testimonial-card reveal"><div class="stars" aria-label="5 yje" data-sq-aria-label="5 yje" data-en-aria-label="5 stars">★★★★★</div><p data-sq="U dorëzua në kohë dhe pikërisht siç e kërkuam." data-en="Delivered on time and exactly as requested.">Delivered on time and exactly as requested.</p><footer class="testimonial-author"><span class="testimonial-name">Giovanni Ferrari</span><span class="verified-badge" aria-label="Klient i verifikuar" data-sq-aria-label="Klient i verifikuar" data-en-aria-label="Verified client">✓</span></footer></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="page contact-layout">
+        <div class="contact-copy reveal">
+          <p class="small-kicker" data-sq="LE TË NDËRTOJMË DIÇKA TË JASHTËZAKONSHME" data-en="LET'S BUILD SOMETHING EXCEPTIONAL">LET'S BUILD SOMETHING EXCEPTIONAL</p>
+          <h2 data-sq="Klienti juaj i ardhshëm tashmë po ju kërkon." data-en="Your next customer is already searching for you.">Your next customer is already searching for you.</h2>
+          <p data-sq="Pyetja është: a do të gjejë një biznes profesional, të besueshëm dhe të gatshëm për ta ndihmuar? Le të krijojmë një faqe interneti që pasqyron vlerën e vërtetë të biznesit tuaj dhe ju dallon në treg." data-en="The question is: Will they find a business that looks professional, trustworthy, and ready to help? Let's create a website that reflects the true value of your business and helps you stand out in a competitive market.">The question is: Will they find a business that looks professional, trustworthy, and ready to help? Let's create a website that reflects the true value of your business and helps you stand out in a competitive market.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#contact"><span data-sq="🚀 Nisni projektin tuaj sot" data-en="🚀 Start Your Project Today">🚀 Start Your Project Today</span><span aria-hidden="true">↗</span></a>
+            <a class="button-secondary" href="tel:+355683138214"><span data-sq="📞 Rezervoni një konsultë falas" data-en="📞 Schedule a Free Consultation">📞 Schedule a Free Consultation</span></a>
+          </div>
+          <div class="contact-details">
+            <a id="whatsapp-link" href="https://wa.me/355683138214?text=P%C3%ABrsh%C3%ABndetje%20Fabi%20Sites%2C%20jam%20i%2Fe%20interesuar%20p%C3%ABr%20nj%C3%AB%20projekt." target="_blank" rel="noopener noreferrer">
+              <span aria-hidden="true">↗</span><span data-sq="Na shkruani në WhatsApp" data-en="Message us on WhatsApp">Na shkruani në WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form">
+          <div class="field"><label for="name" data-sq="Emri juaj" data-en="Your name">Your name</label><input id="name" name="name" autocomplete="name" required placeholder="Your name" data-sq-placeholder="Emri dhe mbiemri" data-en-placeholder="Your name"></div>
+          <div class="field"><label for="email" data-sq="Email-i juaj" data-en="Your email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+          <div class="field"><label for="service" data-sq="Çfarë ju nevojitet?" data-en="What do you need?">What do you need?</label><select id="service" name="service"><option value="" data-sq="Zgjidhni një shërbim" data-en="Choose a service">Choose a service</option><option data-sq="Faqe interneti" data-en="Website">Website</option><option data-sq="Panel administrimi" data-en="Admin dashboard">Admin dashboard</option><option data-sq="Dyqan online" data-en="E-commerce">E-commerce</option><option data-sq="Diçka tjetër" data-en="Something else">Something else</option></select></div>
+          <div class="field"><label for="message" data-sq="Na tregoni për biznesin tuaj" data-en="Tell us about your business">Tell us about your business</label><textarea id="message" name="message" required placeholder="Tell us about your business, your goals, and what you'd like to achieve." data-sq-placeholder="Na tregoni për biznesin dhe synimet tuaja..." data-en-placeholder="Tell us about your business, your goals, and what you'd like to achieve."></textarea></div>
+          <button class="button-primary" type="submit"><span data-sq="Dërgoni kërkesën për projekt →" data-en="Send My Project Request →">Send My Project Request →</span><span aria-hidden="true">↗</span></button>
+          <p class="form-note" id="form-note" aria-live="polite" data-sq="⚡ Përgjigjemi për të gjitha kërkesat për projekte brenda 24 orëve." data-en="⚡ We respond to all project inquiries within 24 hours.">⚡ We respond to all project inquiries within 24 hours.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page footer-inner">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <a class="footer-brand" href="#top">Fabi Sites <span>&amp;</span> Codes</a>
+          <p data-sq="Faqe interneti profesionale, dyqane online dhe panele administrimi për biznese në Shqipëri dhe më gjerë." data-en="Professional websites &amp; admin panels for businesses across Albania and beyond.">Professional websites &amp; admin panels for businesses across Albania and beyond.</p>
+        </div>
+        <div class="footer-column">
+          <h4 data-sq="Kontakt" data-en="Contact">Kontakt</h4>
+          <a href="mailto:fabiobushi13@gmail.com">fabiobushi13@gmail.com</a>
+          <a href="tel:+355683138214">+355 68 313 8214</a>
+          <a id="footer-whatsapp" href="https://wa.me/355683138214?text=P%C3%ABrsh%C3%ABndetje%20Fabi%20Sites%2C%20jam%20i%2Fe%20interesuar%20p%C3%ABr%20nj%C3%AB%20projekt." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+        <div class="footer-column">
+          <h4 data-sq="Shërbimet" data-en="Services">Shërbimet</h4>
+          <a href="#services" data-sq="Website" data-en="Website">Website</a>
+          <a href="#services" data-sq="Panele administrimi" data-en="Admin panels">Admin panels</a>
+          <a href="#services" data-sq="Dyqane online" data-en="E-commerce">E-commerce</a>
+        </div>
+        <div class="footer-column">
+          <h4 data-sq="Navigimi" data-en="Navigate">Navigimi</h4>
+          <a href="#projects" data-sq="Projektet" data-en="Projects">Projektet</a>
+          <a href="#about" data-sq="Rreth Fabi" data-en="About Fabi">Rreth Fabi</a>
+          <a href="#contact" data-sq="Kontakt" data-en="Contact">Kontakt</a>
+        </div>
+      </div>
+      <div class="page footer-meta"><p class="footer-copy">© <span id="current-year">2026</span> FABI SITES AND CODES · ALBANIA</p><a class="back-top" href="#top"><span>↑</span><span data-sq="Kthehu lart" data-en="Back to top">Kthehu lart</span></a></div>
     </div>
-  </div>
-  <div class="marq" aria-hidden="true"><div>
-    <span>Web Design</span><span>✦</span><span>Admin Panels</span><span>✦</span><span>E-commerce</span><span>✦</span><span>Branding</span><span>✦</span><span>SEO</span><span>✦</span><span>Web Apps</span><span>✦</span>
-    <span>Web Design</span><span>✦</span><span>Admin Panels</span><span>✦</span><span>E-commerce</span><span>✦</span><span>Branding</span><span>✦</span><span>SEO</span><span>✦</span><span>Web Apps</span><span>✦</span>
-  </div></div>
-</div>
+  </footer>
 
-<section id="portfolio" class="portfolio-section"><div class="wrap">
-  <div class="portfolio-heading rv"><div class="eyebrow">Selected work</div><h2>Real projects. <span>Thoughtfully built.</span></h2><p class="sub">A look at projects created for real clients — each with its own purpose, style and digital experience.</p></div>
-  <div class="project-grid">
-    <article class="project-card project-dj rv">
-      <a class="project-visual dj-visual" href="https://dj-krenyy.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open DJ KRENY website">
-        <div class="browser-bar"><span></span><span></span><span></span><small>dj-krenyy.netlify.app</small><b>↗</b></div>
-        <div class="dj-screen"><div class="visual-kicker">DJ • EVENTS • EXPERIENCE</div><div class="dj-wordmark">DJ <strong>KRENY</strong></div><div class="dj-line"></div><div class="visual-pill">LET'S MAKE IT A NIGHT</div><div class="dj-equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-      </a>
-      <div class="project-info"><div><span class="project-type">CLIENT PROJECT · 01</span><h3>DJ KRENY</h3></div><span class="project-arrow">↗</span></div>
-      <p>A bold digital presence for a DJ, built to showcase the brand and connect the energy of live events with an online audience.</p>
-      <div class="project-tags"><span>Portfolio</span><span>Brand Identity</span><span>Responsive Web</span></div>
-      <a class="project-link" href="https://dj-krenyy.netlify.app/" target="_blank" rel="noopener noreferrer">Explore live website <span>↗</span></a>
-    </article>
-    <article class="project-card project-biz rv">
-      <a class="project-visual biz-visual" href="https://biz-promo.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Open BizPromo website">
-        <div class="browser-bar"><span></span><span></span><span></span><small>biz-promo.netlify.app</small><b>↗</b></div>
-        <div class="biz-screen"><div class="biz-mini-nav"><strong>BizPromo<span>.</span></strong><small>GROW YOUR BRAND</small></div><div class="biz-hero-copy"><div class="visual-kicker">YOUR BUSINESS, AMPLIFIED</div><div class="biz-headline">Make your<br><em>business seen.</em></div><div class="biz-subline"></div><div class="biz-mini-button">DISCOVER MORE&nbsp; ↗</div></div><div class="biz-orb orb-one"></div><div class="biz-orb orb-two"></div><div class="biz-grid-lines"></div></div>
-      </a>
-      <div class="project-info"><div><span class="project-type">CLIENT PROJECT · 02</span><h3>BizPromo.AL</h3></div><span class="project-arrow">↗</span></div>
-      <p>A promotional website concept designed to help businesses present their services clearly and build a stronger online presence.</p>
-      <div class="project-tags"><span>Business Website</span><span>UI/UX</span><span>Responsive Web</span></div>
-      <a class="project-link" href="https://biz-promo.netlify.app/" target="_blank" rel="noopener noreferrer">Explore live website <span>↗</span></a>
-    </article>
-  </div>
-  <div class="portfolio-foot rv"><span class="portfolio-spark">✳</span><p>Have an idea of your own?</p><a href="#contact">Let's build it together <span>↗</span></a></div>
-</div></section>
+  <script>
+    const languageToggle = document.querySelector('#language-toggle');
+    const menuToggle = document.querySelector('#menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    let language = 'en';
+    document.querySelector('#current-year').textContent = String(new Date().getFullYear());
 
-<section id="services"><div class="wrap">
-<div class="rv"><div class="eyebrow">What we do</div><h2>Everything your business needs online.</h2><p class="sub">From the first sketch to launch day, one studio handles design, code and the tools you'll use every day.</p></div>
-<div class="bento">
-<div class="bc a rv"><div class="ic">▦</div><h3>Custom website design</h3><p>Original, conversion-focused design shaped around your brand, never a recycled template. Every pixel earns its place.</p><ul><li>Landing pages &amp; business sites</li><li>Portfolios &amp; personal brands</li><li>Animations and micro-interactions</li><li>Responsive on phone, tablet, desktop</li></ul></div>
-<div class="bc b rv"><div class="ic">◇</div><h3>Admin panels &amp; dashboards</h3><p>Secure back-offices to manage products, orders, content and customers, without touching code.</p></div>
-<div class="bc c rv"><div class="ic">⚡</div><h3>E-commerce stores</h3><p>Storefronts with catalogues, carts and checkout built to turn visitors into buyers.</p></div>
-<div class="bc d rv"><div class="ic">⌕</div><h3>Speed &amp; performance</h3><p>Lean code that loads instantly and ranks better.</p></div>
-<div class="bc e rv"><div class="ic">↻</div><h3>SEO-ready</h3><p>Clean structure and metadata so people can find you.</p></div>
-<div class="bc f rv"><div class="ic">✦</div><h3>Care &amp; updates</h3><p>Hosting help, fixes and improvements after launch.</p></div>
-</div></div></section>
+    function setMenuOpen(isOpen) {
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', language === 'sq'
+        ? (isOpen ? 'Mbyll menunë' : 'Hap menunë')
+        : (isOpen ? 'Close menu' : 'Open menu'));
+      mainNav.classList.toggle('is-open', isOpen);
+    }
 
-<section id="admin" class="band"><div class="wrap contact ctr">
-<div class="rv"><div class="eyebrow">Admin panels</div><h2>Run your business from one clean screen.</h2>
-<p class="sub">Edit prices, publish content, track orders and manage users from a fast, secure panel designed for real people, not developers.</p>
-<ul class="chk"><li>✓ Role-based access &amp; secure login</li><li>✓ Products, orders, customers &amp; media</li><li>✓ Live stats and exportable reports</li><li>✓ Works great on mobile too</li></ul></div>
-<div class="why duo">
-<div class="bc rv"><h3 class="big">Full control</h3><p>Update your site anytime, no developer needed.</p></div>
-<div class="bc rv"><h3 class="big">Built to scale</h3><p>Grows with your catalogue and customers.</p></div>
-</div></div></section>
+    function setLanguage(nextLanguage) {
+      language = nextLanguage;
+      document.documentElement.lang = language;
+      document.querySelectorAll('[data-sq][data-en]').forEach((element) => {
+        element.textContent = element.dataset[language];
+      });
+      document.querySelectorAll('[data-sq-placeholder][data-en-placeholder]').forEach((element) => {
+        element.setAttribute('placeholder', element.dataset[`${language}Placeholder`]);
+      });
+      document.querySelectorAll('[data-sq-aria-label][data-en-aria-label]').forEach((element) => {
+        element.setAttribute('aria-label', element.dataset[`${language}AriaLabel`]);
+      });
+      document.querySelector('#meta-description').setAttribute('content', language === 'sq'
+        ? 'Fabi Sites & Codes krijon website moderne dhe panele administrimi të personalizuara për biznese që duan të rriten online.'
+        : 'Fabi Sites & Codes creates modern websites and custom admin dashboards for businesses ready to grow online.');
+      const whatsappMessage = language === 'sq'
+        ? 'Përshëndetje Fabi Sites, jam i/e interesuar për një projekt.'
+        : "Hello Fabi Sites, I'm interested in a project.";
+      const whatsappUrl = `https://wa.me/355683138214?text=${encodeURIComponent(whatsappMessage)}`;
+      document.querySelectorAll('#whatsapp-link, #footer-whatsapp').forEach((link) => {
+        link.href = whatsappUrl;
+      });
+      languageToggle.innerHTML = language === 'sq' ? ' EN / <strong>SQ</strong> ' : ' <strong>EN</strong> / SQ ';
+      languageToggle.setAttribute('aria-label', language === 'sq' ? 'Ndrysho gjuhën në anglisht' : 'Switch language to Albanian');
+      setMenuOpen(menuToggle.getAttribute('aria-expanded') === 'true');
+    }
 
-<section id="process"><div class="wrap">
-<div class="rv"><div class="eyebrow">How we work</div><h2>A simple process, a standout result.</h2></div>
-<div class="steps">
-<div class="st rv"><h3>Discover</h3><p>We learn your goals, audience and competitors, studying the best sites worldwide for ideas.</p></div>
-<div class="st rv"><h3>Design</h3><p>You see a bold, on-brand concept before a single line of code ships.</p></div>
-<div class="st rv"><h3>Build</h3><p>Hand-coded, tested and tuned for speed on every device.</p></div>
-<div class="st rv"><h3>Launch</h3><p>We go live, train you on the admin panel and stay close for support.</p></div>
-</div></div></section>
+    setLanguage(language);
 
-<section id="contact" class="band"><div class="wrap contact">
-<div class="rv">
-  <div class="eyebrow">Let's talk</div>
-  <h2>Ready for a website people remember?</h2>
-  <p class="sub">Tell us about your project and we'll reply with ideas and a clear quote.</p>
-  <div class="ci">
-  <a href="mailto:fabiobushi13@gmail.com">
-    <span class="ic flat">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-      </svg>
-    </span>
-    <span><small>Email</small>fabiobushi13@gmail.com</span>
-  </a>
+    languageToggle.addEventListener('click', () => setLanguage(language === 'sq' ? 'en' : 'sq'));
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      setMenuOpen(!isExpanded);
+    });
+    mainNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)));
+    document.querySelector('.contact-link').addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
 
-  <a href="tel:+355683138214">
-    <span class="ic flat">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-      </svg>
-    </span>
-    <span><small>Phone</small>+355 68 313 8214</span>
-  </a>
-</div>
-</div>
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('is-pending');
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((element) => {
+        element.classList.add('is-pending');
+        revealObserver.observe(element);
+      });
+    }
 
-<form id="f" class="rv">
-  <input name="name" placeholder="Your name" required autocomplete="name">
-  <input name="email" type="email" placeholder="Your email" required autocomplete="email">
-  <select name="project_type" aria-label="Project type">
-    <option data-en="Business website" data-sq="Faqe biznesi">Business website</option>
-    <option data-en="E-commerce store" data-sq="Dyqan online">E-commerce store</option>
-    <option data-en="Admin panel / dashboard" data-sq="Panel administrimi / dashboard">Admin panel / dashboard</option>
-    <option data-en="Redesign" data-sq="Ridizajnim">Redesign</option>
-    <option data-en="Something else" data-sq="Diçka tjetër">Something else</option>
-  </select>
-  <select name="budget" aria-label="Project budget">
-    <option value="" data-en="Estimated budget (optional)" data-sq="Buxheti i përafërt (opsionale)">Estimated budget (optional)</option>
-    <option data-en="Under €150" data-sq="Nën 150 €">Under €150</option>
-    <option data-en="€150–€400" data-sq="150–400 €">€150–€400</option>
-    <option data-en="€400–€800" data-sq="400–800 €">€400–€800</option>
-    <option data-en="€800+" data-sq="800 € e lart">€800+</option>
-    <option data-en="Not sure yet" data-sq="Nuk jam i sigurt ende">Not sure yet</option>
-  </select>
-  <select name="timeframe" aria-label="Project timeframe">
-    <option value="" data-en="When do you need it? (optional)" data-sq="Kur të duhet projekti? (opsionale)">When do you need it? (optional)</option>
-    <option data-en="As soon as possible" data-sq="Sa më shpejt të jetë e mundur">As soon as possible</option>
-    <option data-en="Within 2–4 weeks" data-sq="Brenda 2–4 javësh">Within 2–4 weeks</option>
-    <option data-en="Within 1–3 months" data-sq="Brenda 1–3 muajsh">Within 1–3 months</option>
-    <option data-en="I'm just exploring" data-sq="Po shqyrtoj mundësitë">I'm just exploring</option>
-  </select>
-  <textarea name="message" placeholder="Tell us about your project…" required></textarea>
-  <input type="hidden" name="_subject" value="New project enquiry — Fabi Sites and Codes">
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-  <button class="btn p" type="submit">Send message →</button>
-  <p id="st" role="status" style="margin:0;color:var(--mut);font-size:.9rem"></p>
-  <a class="btn g wa-link" href="https://wa.me/355683138214?text=Hello%20Fabi%20Sites%2C%20I%27m%20interested%20in%20a%20project." target="_blank" rel="noopener noreferrer">Prefer WhatsApp? Chat with us ↗</a>
-</form>
-</div></section>
-</main>
-
-<footer><div class="wrap"><span>© <span id="y"></span> Fabi Sites and Codes. All rights reserved.</span><span>Websites · Admin panels · Design</span></div></footer>
-
-<script src="script.js" defer></script>
+    document.querySelector('#contact-form').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const isAlbanian = language === 'sq';
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const service = formData.get('service') || (isAlbanian ? 'E papërcaktuar' : 'Not specified');
+      const message = formData.get('message');
+      const subject = encodeURIComponent(`${isAlbanian ? 'Kërkesë për projekt nga' : 'Project inquiry from'} ${name}`);
+      const body = encodeURIComponent([
+        `${isAlbanian ? 'Emri' : 'Name'}: ${name}`,
+        `${isAlbanian ? 'Email' : 'Email'}: ${email}`,
+        `${isAlbanian ? 'Shërbimi' : 'Service'}: ${service}`,
+        '',
+        message
+      ].join('\n'));
+      window.location.href = `mailto:fabiobushi13@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
 </body>
 </html>
